@@ -1,0 +1,282 @@
+[
+  {
+    "id": "/procedures/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+    "name": "string",
+    "description": "string",
+    "createdAt": "2020-10-14T15:45:31.201Z",
+    "updatedAt": "2020-10-14T15:45:31.201Z",
+    "expiresAt": "2020-10-14T15:45:31.201Z",
+    "status": "draft",
+    "creator": "/users/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+    "creatorFirstName": "string",
+    "creatorLastName": "string",
+    "workspace": "/workspaces/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+    "template": true,
+    "ordered": true,
+    "parent": "/procedures/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+    "metadata": {
+      "key1": "string",
+      "key2": 0
+    },
+    "config": {
+      "email": {
+        "procedure.started": [
+          {
+            "to": [
+              "@members"
+            ],
+            "subject": "string",
+            "message": "string",
+            "fromName": "string"
+          }
+        ],
+        "procedure.finished": [
+          {
+            "to": [
+              "@members"
+            ],
+            "subject": "string",
+            "message": "string",
+            "fromName": "string"
+          }
+        ],
+        "procedure.refused": [
+          {
+            "to": [
+              "@members"
+            ],
+            "subject": "string",
+            "message": "string",
+            "fromName": "string"
+          }
+        ],
+        "procedure.expired": [
+          {
+            "to": [
+              "@members"
+            ],
+            "subject": "string",
+            "message": "string",
+            "fromName": "string"
+          }
+        ],
+        "procedure.deleted": [
+          {
+            "to": [
+              "@members"
+            ],
+            "subject": "string",
+            "message": "string",
+            "fromName": "string"
+          }
+        ],
+        "member.started": [
+          {
+            "to": [
+              "@members"
+            ],
+            "subject": "string",
+            "message": "string",
+            "fromName": "string"
+          }
+        ],
+        "member.finished": [
+          {
+            "to": [
+              "@members"
+            ],
+            "subject": "string",
+            "message": "string",
+            "fromName": "string"
+          }
+        ],
+        "comment.created": [
+          {
+            "to": [
+              "@members"
+            ],
+            "subject": "string",
+            "message": "string",
+            "fromName": "string"
+          }
+        ]
+      },
+      "reminders": [
+        {
+          "interval": 0,
+          "limit": 0,
+          "config": {
+            "email": {
+              "reminder.executed": [
+                {
+                  "to": [
+                    "@members"
+                  ],
+                  "subject": "string",
+                  "message": "string",
+                  "fromName": "string"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "webhook": {
+        "procedure.started": [
+          {
+            "url": "string",
+            "method": "GET",
+            "headers": {
+              "X-Yousign-Custom-Header": "Test value"
+            }
+          }
+        ],
+        "procedure.finished": [
+          {
+            "url": "string",
+            "method": "GET",
+            "headers": {
+              "X-Yousign-Custom-Header": "Test value"
+            }
+          }
+        ],
+        "procedure.refused": [
+          {
+            "url": "string",
+            "method": "GET",
+            "headers": {
+              "X-Yousign-Custom-Header": "Test value"
+            }
+          }
+        ],
+        "procedure.expired": [
+          {
+            "url": "string",
+            "method": "GET",
+            "headers": {
+              "X-Yousign-Custom-Header": "Test value"
+            }
+          }
+        ],
+        "procedure.deleted": [
+          {
+            "url": "string",
+            "method": "GET",
+            "headers": {
+              "X-Yousign-Custom-Header": "Test value"
+            }
+          }
+        ],
+        "member.started": [
+          {
+            "url": "string",
+            "method": "GET",
+            "headers": {
+              "X-Yousign-Custom-Header": "Test value"
+            }
+          }
+        ],
+        "member.finished": [
+          {
+            "url": "string",
+            "method": "GET",
+            "headers": {
+              "X-Yousign-Custom-Header": "Test value"
+            }
+          }
+        ],
+        "comment.created": [
+          {
+            "url": "string",
+            "method": "GET",
+            "headers": {
+              "X-Yousign-Custom-Header": "Test value"
+            }
+          }
+        ]
+      }
+    },
+    "members": [
+      {
+        "id": "/members/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+        "user": "/users/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+        "type": "signer",
+        "firstname": "string",
+        "lastname": "string",
+        "email": "string",
+        "phone": "string",
+        "position": 0,
+        "createdAt": "2020-10-14T15:45:31.201Z",
+        "updatedAt": "2020-10-14T15:45:31.201Z",
+        "status": "pending",
+        "fileObjects": [
+          {
+            "id": "/file_objects/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+            "file": {
+              "id": "/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+              "name": "string",
+              "type": "signable",
+              "contentType": "application/pdf",
+              "description": "string",
+              "createdAt": "2020-10-14T15:45:31.201Z",
+              "updatedAt": "2020-10-14T15:45:31.201Z",
+              "metadata": {
+                "key1": "string",
+                "key2": 0
+              },
+              "workspace": "/workspaces/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+              "creator": "/users/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+              "sha256": "23203f9264161714cdb8d2f474b9b641e6a735f8cea4098c40a3cab8743bd749",
+              "position": 0
+            },
+            "page": 0,
+            "position": "400,700,500,800",
+            "fieldName": "string",
+            "mention": "Read and approuved",
+            "mention2": "string",
+            "createdAt": "2020-10-14T15:45:31.201Z",
+            "updatedAt": "2020-10-14T15:45:31.201Z",
+            "executedAt": "2020-10-14T15:45:31.201Z",
+            "reason": "string",
+            "type": "signature",
+            "contentRequired": false,
+            "content": "string",
+            "fontFamily": "raleway",
+            "fontSize": 0,
+            "fontColor": "0,0,0"
+          }
+        ],
+        "comment": "string",
+        "procedure": "string",
+        "operationLevel": "none",
+        "operationCustomModes": [
+          "sms"
+        ],
+        "modeSmsConfiguration": {
+          "content": "Hello, your code for signature is {{code}}."
+        }
+      }
+    ],
+    "files": [
+      {
+        "id": "/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+        "name": "string",
+        "type": "signable",
+        "contentType": "application/pdf",
+        "description": "string",
+        "createdAt": "2020-10-14T15:45:31.201Z",
+        "updatedAt": "2020-10-14T15:45:31.201Z",
+        "metadata": {
+          "key1": "string",
+          "key2": 0
+        },
+        "workspace": "/workspaces/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+        "creator": "/users/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+        "sha256": "23203f9264161714cdb8d2f474b9b641e6a735f8cea4098c40a3cab8743bd749",
+        "position": 0
+      }
+    ],
+    "relatedFilesEnable": true,
+    "archive": false
+  }
+]

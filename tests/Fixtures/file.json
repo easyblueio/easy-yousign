@@ -1,0 +1,17 @@
+{
+  "id": "/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+  "name": "string",
+  "type": "signable",
+  "contentType": "application/pdf",
+  "description": "string",
+  "createdAt": "2020-04-23T18:25:43.511Z",
+  "updatedAt": "2020-04-23T18:25:43.511Z",
+  "metadata": {
+    "key1": "string",
+    "key2": 0
+  },
+  "workspace": "/workspaces/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+  "creator": "/users/9d1ede2b-5687-4440-bdc8-dd0bc64f668c",
+  "sha256": "23203f9264161714cdb8d2f474b9b641e6a735f8cea4098c40a3cab8743bd749",
+  "position": 0
+}
