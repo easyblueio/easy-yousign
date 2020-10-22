@@ -172,17 +172,17 @@ class File
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getContent($decoding = true): ?string
     {
-        return $this->content;
+        return $decoding && isset($this->content) ? Base64Helper::base64decode($this->content) : $this->content;
     }
 
     /**
      * @return File
      */
-    public function setContent(?string $content): self
+    public function setContent(?string $content, $encoding = true): self
     {
-        $this->content = Base64Helper::isBase64Encoded($content) ? $content : Base64Helper::base64Encode($content);
+        $this->content = $encoding ? Base64Helper::base64Encode($content) : false;
 
         return $this;
     }

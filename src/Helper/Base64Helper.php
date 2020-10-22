@@ -15,11 +15,16 @@ class Base64Helper
 {
     public static function isBase64Encoded($data)
     {
-        return preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $data);
+        return preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $data) > 0;
     }
 
     public static function base64Encode($data)
     {
         return base64_encode($data);
+    }
+
+    public static function base64decode($data)
+    {
+        return base64_decode($data);
     }
 }

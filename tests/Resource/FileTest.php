@@ -71,4 +71,17 @@ class FileTest extends TestCase
         $file = (new FileResource($this->client, $this->serializer))->get('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c');
         $this->assertSame('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', $file->getId());
     }
+
+    public function testDownload()
+    {
+        $response = $this->createMock(MessageInterface::class);
+        $response->method('getBody')
+            ->willReturn('content');
+
+        $this->client->method('request')
+            ->willReturn($response);
+
+        $content = (new FileResource($this->client, $this->serializer))->download('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c');
+        $this->assertSame('content', $content);
+    }
 }
