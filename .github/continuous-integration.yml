@@ -1,0 +1,44 @@
+name: "Continuous Integration"
+
+on: [ push ]
+
+jobs:
+    quality:
+        name: Quality
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v1
+            -   name: Install PHP extensions
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '7.4'
+                    tools: pecl, symfony, composer, flex, cs2pr
+                    ini-values: memory_limit=-1
+                    extensions: intl, xsl, mysql, gd, zip, amqp, ctype, json, soap
+            -   name: Cache Composer packages
+                uses: actions/cache@v1
+                with:
+                    path: ~/.composer/cache
+                    key: composer-${{ github.sha }}
+                    restore-keys: composer-
+                continue-on-error: true
+            -   name: Run prepare PHPUnit
+                run: mkdir -p build/logs
+            -   name: Run PHPUnit units tests
+                run: vendor/bin/phpunit --testdox
+            -   name: Run PHPMD
+                run: phpmd src text .phpmd.xml
+            -   name: Run PHPCPD
+                run: phpcpd src
+            -   name: Run PHPCS
+                run: phpcs -n --standard=.phpcs.xml src --report=checkstyle | cs2pr
+            -   name: Run PHPStan analysis
+                run: ./vendor/bin/phpstan analyse --memory-limit=4G -l 4 --error-format=checkstyle | cs2pr
+            -   name: Upload artifacts
+                if: always()
+                uses: actions/upload-artifact@v1
+                with:
+                    name: phpunit-logs
+                    path: build/logs
+                continue-on-error: true

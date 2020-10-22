@@ -1,5 +1,9 @@
-# easyblue/easy-yousign
+<center><img src="https://i.imgur.com/bo6FcQ7.png" alt="Easyblue" /></center>
 
+# easyblue/easy-yousign
+`easy-yousign` provide an easy way to use [YouSign API](https://dev.yousign.com/). Modern, tested and fully written in php.
+
+Written here at [easyblue.io](https://www.easyblue.io/), a french insurtech company. Check out our website to see how we're using this package in production.
 <!--
 TODO: Make sure the following URLs are correct and working for your project.
       Then, remove these comments to display the badges, giving users a quick
