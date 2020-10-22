@@ -6,21 +6,20 @@
 Written here at [easyblue.io](https://www.easyblue.io/), a french insurtech company. Check out our website to see how we're using this package in production.
 
 
-[![Source Code][badge-source]][source]
 [![Latest Version][badge-release]][packagist]
 [![Software License][badge-license]][license]
 [![PHP Version][badge-php]][php]
-[![Coverage Status][badge-coverage]][coverage]
+<!--[![Coverage Status][badge-coverage]][coverage]-->
 [![Total Downloads][badge-downloads]][downloads]
+[![github issues](https://img.shields.io/github/issues/easyblueio/easy-cache-react.svg?style=flat-square)](https://github.com/easyblueio/easy-yousign/issues)
+[![github closed issues](https://img.shields.io/github/issues-closed/easyblueio/easy-cache-react.svg?style=flat-square&colorB=44cc11)](https://github.com/easyblueio/easy-yousign/issues?q=is%3Aissue+is%3Aclosed)
 
-[badge-source]: http://img.shields.io/badge/source-easyblue/easy-yousign-blue.svg?style=flat-square
 [badge-release]: https://img.shields.io/packagist/v/easyblue/easy-yousign.svg?style=flat-square&label=release
 [badge-license]: https://img.shields.io/packagist/l/easyblue/easy-yousign.svg?style=flat-square
 [badge-php]: https://img.shields.io/packagist/php-v/easyblue/easy-yousign.svg?style=flat-square
 [badge-coverage]: https://img.shields.io/coveralls/github/easyblue/easy-yousign/master.svg?style=flat-square
 [badge-downloads]: https://img.shields.io/packagist/dt/easyblue/easy-yousign.svg?style=flat-square&colorB=mediumvioletred
 
-[source]: https://github.com/easyblueio/easy-yousign
 [packagist]: https://packagist.org/packages/easyblue/easy-yousign
 [license]: https://github.com/easyblueio/easy-yousign/blob/master/LICENSE
 [php]: https://php.net
@@ -60,13 +59,15 @@ $member = (new Member())
 
 $file = (new File())
     ->setName('my_file.pdf')
-    ->setContent('base64 content');
+    ->setContent('binary content');
+    // or
+    ->setContent('base64 content', false);
 $file = $factory->file()->create();
 
 $fileObject = (new FileObject())
     ->setFile($file)
-    ->setPage($signableDocument->getPageToSign())
-    ->setPosition($signableDocument->getSignatureCoordinates());
+    ->setPage(1)
+    ->setPosition('230,499,464,589');
 $member->addFileObject($fileObject);
 
 $procedure = (new Procedure())->setName('My first procedure')
@@ -97,8 +98,11 @@ $ysApiKey = 'test';
 $ysApiUrl = 'https://staging-api.yousign.com'; 
 $factory = Factory::create($ysApiKey, $ysApiUrl);
 
-// Pdf content
+// Pdf content as binary file
 $content = $factory->file()->download('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c');
+
+// Pdf content as base64
+$content = $factory->file()->download('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', false);
 ```
 
 ## Contributing
@@ -106,9 +110,7 @@ $content = $factory->file()->download('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f66
 Contributions are welcome! Before contributing to this project, familiarize
 yourself with [CONTRIBUTING.md](CONTRIBUTING.md).
 
-To develop this project, you will need [PHP](https://www.php.net) 7.4 or greater,
-[Composer](https://getcomposer.org), [Node.js](https://nodejs.org/), and
-[Yarn](https://yarnpkg.com).
+To develop this project, you will need [PHP](https://www.php.net) 7.4 or greater, [Composer](https://getcomposer.org) and make.
 
 After cloning this repository locally, execute the following commands:
 
@@ -168,9 +170,6 @@ base folder structure and layout.
 | **resources/**    | Additional resources for this project          |
 | **src/**          | Project library and application source code    |
 | **tests/**        | Tests for this project                         |
-
-
-
 
 
 ## Copyright and License

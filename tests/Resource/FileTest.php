@@ -71,4 +71,32 @@ class FileTest extends TestCase
         $file = (new FileResource($this->client, $this->serializer))->get('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c');
         $this->assertSame('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', $file->getId());
     }
+
+    public function testDownloadAsBinary()
+    {
+        $response = $this->createMock(MessageInterface::class);
+        $response->method('getBody')
+            ->willReturn('content');
+
+        $this->client->method('request')
+            ->with('GET', '/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c/download?alt=media')
+            ->willReturn($response);
+
+        $content = (new FileResource($this->client, $this->serializer))->download('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c');
+        $this->assertSame('content', $content);
+    }
+
+    public function testDownloadAsBase64()
+    {
+        $response = $this->createMock(MessageInterface::class);
+        $response->method('getBody')
+                 ->willReturn('content');
+
+        $this->client->method('request')
+                     ->with('GET', '/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c/download')
+                     ->willReturn($response);
+
+        $content = (new FileResource($this->client, $this->serializer))->download('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', false);
+        $this->assertSame('content', $content);
+    }
 }
