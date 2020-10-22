@@ -23,18 +23,20 @@ jobs:
                     key: composer-${{ github.sha }}
                     restore-keys: composer-
                 continue-on-error: true
+            -   name: Install project dependencies
+                run: composer install --no-progress --no-suggest --ansi
             -   name: Run prepare PHPUnit
                 run: mkdir -p build/logs
             -   name: Run PHPUnit units tests
                 run: vendor/bin/phpunit --testdox
             -   name: Run PHPMD
-                run: phpmd src text .phpmd.xml
+                run: vendor/bin/phpmd src text .phpmd.xml
             -   name: Run PHPCPD
-                run: phpcpd src
+                run: vendor/bin/phpcpd src
             -   name: Run PHPCS
-                run: phpcs -n --standard=.phpcs.xml src --report=checkstyle | cs2pr
+                run: vendor/bin/phpcs -n --standard=.phpcs.xml src --report=checkstyle | cs2pr
             -   name: Run PHPStan analysis
-                run: ./vendor/bin/phpstan analyse --memory-limit=4G -l 4 --error-format=checkstyle | cs2pr
+                run: vendor/bin/phpstan analyse --memory-limit=4G -l 4 --error-format=checkstyle | cs2pr
             -   name: Upload artifacts
                 if: always()
                 uses: actions/upload-artifact@v1
