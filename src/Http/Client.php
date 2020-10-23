@@ -11,6 +11,7 @@ declare(strict_types = 1);
 
 namespace Easyblue\YouSign\Http;
 
+use Easyblue\YouSign\Exception\YouSignClientException;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 
@@ -50,8 +51,7 @@ class Client
         try {
             return $this->client->request($method, sprintf('%s/%s', $this->baseUrl, ltrim($endpoint, '/')), $options);
         } catch (ClientException $exception) {
-            // TODO: menage exception
-            throw $exception;
+            throw new YouSignClientException($exception);
         }
     }
 }
