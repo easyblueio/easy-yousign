@@ -11,7 +11,6 @@ declare(strict_types = 1);
 
 namespace Easyblue\YouSign\Model;
 
-use Easyblue\YouSign\Helper\Base64Helper;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
@@ -159,9 +158,9 @@ class File
         return $this->content;
     }
 
-    public function setContent(?string $content, $encoding = true): self
+    public function setContent(?string $content): self
     {
-        $this->content = $encoding ? Base64Helper::base64Encode($content) : $content;
+        $this->content = $content;
 
         return $this;
     }

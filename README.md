@@ -58,9 +58,7 @@ $member = (new Member())
 
 $file = (new File())
     ->setName('my_file.pdf')
-    ->setContent('binary content');
-    // or
-    ->setContent('base64 content', false);
+    ->setContent('base64 content');
 $file = $factory->file()->create();
 
 $fileObject = (new FileObject())
