@@ -34,7 +34,7 @@ class ClientTest extends TestCase
         $this->client->method('request')
            ->willReturn($response);
 
-        $client = new Client(['api_key' => 'test', 'base_url' => 'http://api.dev/'], $this->client);
+        $client = new Client('test', Client::ENV_STAGING, $this->client);
 
         $this->assertSame('content', $client->request('GET', '/test')->getBody());
     }

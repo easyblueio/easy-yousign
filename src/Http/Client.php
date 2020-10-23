@@ -16,18 +16,24 @@ use GuzzleHttp\Exception\ClientException;
 
 class Client
 {
+    const ENV_PROD    = 'prod';
+    const ENV_STAGING = 'staging';
+
+    const URL_PROD    = 'https://api.yousign.com';
+    const URL_STAGING = 'https://staging-api.yousign.com';
+
     public string $key;
-    public string $baseUrl = 'https://staging-api.yousign.com';
+    public string $baseUrl;
 
     public GuzzleClient $client;
     protected array $clientOptions = [];
 
-    public function __construct(array $config = [], GuzzleClient $client = null, array $clientOptions = [])
+    public function __construct(string $apiKey, string $env = self::ENV_STAGING, GuzzleClient $client = null, array $clientOptions = [])
     {
         $this->clientOptions = $clientOptions;
 
-        $this->key     = $config['api_key'];
-        $this->baseUrl = $config['base_url'];
+        $this->key     = $apiKey;
+        $this->baseUrl = self::ENV_PROD === $env ? self::URL_PROD : self::URL_STAGING;
 
         if (null === $client) {
             $client = new GuzzleClient();

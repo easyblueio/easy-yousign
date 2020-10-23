@@ -23,10 +23,10 @@ final class Factory
     protected Client $client;
     protected YouSignSerializer $serializer;
 
-    public function __construct(string $apiKey, string $baseUrl, Client $client = null, array $clientOptions = [])
+    public function __construct(string $apiKey, string $env, Client $client = null, array $clientOptions = [])
     {
         if (null === $client) {
-            $client = new Client(['base_url' => $baseUrl, 'api_key' => $apiKey], null, $clientOptions);
+            $client = new Client($apiKey, $env, null, $clientOptions);
         }
         $this->client     = $client;
         $this->serializer = new YouSignSerializer();
