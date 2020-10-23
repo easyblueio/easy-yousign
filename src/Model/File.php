@@ -154,14 +154,14 @@ class File
         return $this;
     }
 
-    public function getContent($decoding = true): ?string
+    public function getContent(): ?string
     {
-        return $decoding && isset($this->content) ? Base64Helper::base64decode($this->content) : $this->content;
+        return $this->content;
     }
 
     public function setContent(?string $content, $encoding = true): self
     {
-        $this->content = $encoding ? Base64Helper::base64Encode($content) : false;
+        $this->content = $encoding ? Base64Helper::base64Encode($content) : $content;
 
         return $this;
     }
