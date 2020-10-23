@@ -103,9 +103,6 @@ class FileObject
         return $this->id;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -118,9 +115,6 @@ class FileObject
         return $this->page;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setPage(int $page): self
     {
         $this->page = $page;
@@ -133,9 +127,6 @@ class FileObject
         return $this->position;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setPosition(?string $position): self
     {
         $this->position = $position;
@@ -148,9 +139,6 @@ class FileObject
         return $this->fieldName;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setFieldName(?string $fieldName): self
     {
         $this->fieldName = $fieldName;
@@ -163,9 +151,6 @@ class FileObject
         return $this->mention;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setMention(?string $mention): self
     {
         $this->mention = $mention;
@@ -178,9 +163,6 @@ class FileObject
         return $this->mention2;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setMention2(?string $mention2): self
     {
         $this->mention2 = $mention2;
@@ -193,9 +175,6 @@ class FileObject
         return $this->executedAt;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setExecutedAt(?\DateTime $executedAt): self
     {
         $this->executedAt = $executedAt;
@@ -208,9 +187,6 @@ class FileObject
         return $this->reason;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setReason(?string $reason): self
     {
         $this->reason = $reason;
@@ -223,9 +199,6 @@ class FileObject
         return $this->type;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setType(?string $type): self
     {
         $this->type = $type;
@@ -238,9 +211,6 @@ class FileObject
         return $this->contentRequired;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setContentRequired(bool $contentRequired): self
     {
         $this->contentRequired = $contentRequired;
@@ -253,9 +223,6 @@ class FileObject
         return $this->content;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setContent(?string $content): self
     {
         $this->content = $content;
@@ -268,9 +235,6 @@ class FileObject
         return $this->fontFamily;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setFontFamily(?string $fontFamily): self
     {
         $this->fontFamily = $fontFamily;
@@ -283,9 +247,6 @@ class FileObject
         return $this->fontSize;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setFontSize(?int $fontSize): self
     {
         $this->fontSize = $fontSize;
@@ -298,9 +259,6 @@ class FileObject
         return $this->fontColor;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setFontColor(?string $fontColor): self
     {
         $this->fontColor = $fontColor;
@@ -317,9 +275,6 @@ class FileObject
         return $this->fileId;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setFileId(?string $fileId): self
     {
         $this->fileId = $fileId;
@@ -332,9 +287,6 @@ class FileObject
         return $this->file;
     }
 
-    /**
-     * @return FileObject
-     */
     public function setFile(?File $file): self
     {
         $this->file = $file;

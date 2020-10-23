@@ -127,9 +127,6 @@ class Procedure
         return $this->id;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -142,9 +139,6 @@ class Procedure
         return $this->name;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -157,9 +151,6 @@ class Procedure
         return $this->expiresAt;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setExpiresAt(?\DateTime $expiresAt): self
     {
         $this->expiresAt = $expiresAt;
@@ -172,9 +163,6 @@ class Procedure
         return $this->status;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setStatus(?string $status): self
     {
         $this->status = $status;
@@ -187,9 +175,6 @@ class Procedure
         return $this->creator;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setCreator(?string $creator): self
     {
         $this->creator = $creator;
@@ -202,9 +187,6 @@ class Procedure
         return $this->creatorFirstname;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setCreatorFirstname(?string $creatorFirstname): self
     {
         $this->creatorFirstname = $creatorFirstname;
@@ -217,9 +199,6 @@ class Procedure
         return $this->creatorLastname;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setCreatorLastname(?string $creatorLastname): self
     {
         $this->creatorLastname = $creatorLastname;
@@ -232,9 +211,6 @@ class Procedure
         return $this->workspace;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setWorkspace(?string $workspace): self
     {
         $this->workspace = $workspace;
@@ -247,9 +223,6 @@ class Procedure
         return $this->parent;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setParent(?string $parent): self
     {
         $this->parent = $parent;
@@ -262,9 +235,6 @@ class Procedure
         return $this->template;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setTemplate(bool $template): self
     {
         $this->template = $template;
@@ -277,9 +247,6 @@ class Procedure
         return $this->description;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setDescription(?string $description): self
     {
         $this->description = $description;
@@ -292,9 +259,6 @@ class Procedure
         return $this->ordered;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setOrdered(bool $ordered): self
     {
         $this->ordered = $ordered;
@@ -307,9 +271,6 @@ class Procedure
         return $this->relatedFilesEnable;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setRelatedFilesEnable(bool $relatedFilesEnable): self
     {
         $this->relatedFilesEnable = $relatedFilesEnable;
@@ -322,9 +283,6 @@ class Procedure
         return $this->archive;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setArchive(bool $archive): self
     {
         $this->archive = $archive;
@@ -352,9 +310,6 @@ class Procedure
         return $this;
     }
 
-    /**
-     * @return Procedure
-     */
     public function addMember(Member $member): self
     {
         $this->members[] = $member;
@@ -367,9 +322,6 @@ class Procedure
         return $this->metadatas;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setMetadatas(array $metadatas): self
     {
         $this->metadatas = $metadatas;
@@ -382,9 +334,6 @@ class Procedure
         return $this->config;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setConfig(?ProcedureConfig $config): self
     {
         $this->config = $config;
@@ -397,9 +346,6 @@ class Procedure
         return $this->files;
     }
 
-    /**
-     * @return Procedure
-     */
     public function setFiles(array $files): self
     {
         $this->files = $files;
@@ -407,9 +353,6 @@ class Procedure
         return $this;
     }
 
-    /**
-     * @return Procedure
-     */
     public function addFile(File $file): self
     {
         $this->files[] = $file;

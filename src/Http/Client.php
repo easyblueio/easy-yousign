@@ -27,7 +27,7 @@ class Client
     public string $baseUrl;
 
     public GuzzleClient $client;
-    protected array $clientOptions = [];
+    protected array     $clientOptions = [];
 
     public function __construct(string $apiKey, string $env = self::ENV_STAGING, GuzzleClient $client = null, array $clientOptions = [])
     {
@@ -40,6 +40,7 @@ class Client
             $client = new GuzzleClient();
         }
 
+        /* @var GuzzleClient $client */
         $this->client = $client;
     }
 

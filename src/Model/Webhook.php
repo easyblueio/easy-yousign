@@ -35,9 +35,6 @@ class Webhook
         return $this->url;
     }
 
-    /**
-     * @return Webhook
-     */
     public function setUrl(?string $url): self
     {
         $this->url = $url;
@@ -50,9 +47,6 @@ class Webhook
         return $this->method;
     }
 
-    /**
-     * @return Webhook
-     */
     public function setMethod(?string $method): self
     {
         $this->method = $method;
@@ -65,9 +59,6 @@ class Webhook
         return $this->headers->getParameters();
     }
 
-    /**
-     * @return Webhook
-     */
     public function setHeaders(Header $headers): self
     {
         $this->headers = $headers;

@@ -28,49 +28,63 @@ class ProcedureConfigEmail
     /**
      * @Groups({"read", "write"})
      * @SerializedName("procedure.started")
+     *
+     * @var Email[]
      */
     protected array $procedureStartedEmails = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("procedure.finished")
+     *
+     * @var Email[]
      */
     protected array $procedureFinishedEmails = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("procedure.refused")
+     *
+     * @var Email[]
      */
     protected array $procedureRefusedEmails = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("procedure.expired")
+     *
+     * @var Email[]
      */
     protected array $procedureExpiredEmails = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("procedure.deleted")
+     *
+     * @var Email[]
      */
     protected array $procedureDeletedEmails = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("member.finished")
+     *
+     * @var Email[]
      */
     protected array $memberFinishedEmails = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("comment.created")
+     *
+     * @var Email[]
      */
     protected array $commentCreatedEmails = [];
 
     /**
-     * @return Email[]|null
+     * @return Email[]
      */
-    public function getProcedureStartedEmails(): ?array
+    public function getProcedureStartedEmails(): array
     {
         return $this->procedureStartedEmails;
     }
@@ -82,14 +96,11 @@ class ProcedureConfigEmail
      */
     public function setProcedureStartedEmails(?array $procedureStartedEmails): self
     {
-        $this->procedureStartedEmails = $procedureStartedEmails;
+        $this->procedureStartedEmails = $procedureStartedEmails ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigEmail
-     */
     public function addProcedureStartedEmail(Email $procedureStartedEmail): self
     {
         $this->procedureStartedEmails[] = $procedureStartedEmail;
@@ -98,9 +109,9 @@ class ProcedureConfigEmail
     }
 
     /**
-     * @return Email[]|null
+     * @return Email[]
      */
-    public function getProcedureFinishedEmails(): ?array
+    public function getProcedureFinishedEmails(): array
     {
         return $this->procedureFinishedEmails;
     }
@@ -112,14 +123,11 @@ class ProcedureConfigEmail
      */
     public function setProcedureFinishedEmails(?array $procedureFinishedEmails): self
     {
-        $this->procedureFinishedEmails = $procedureFinishedEmails;
+        $this->procedureFinishedEmails = $procedureFinishedEmails ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigEmail
-     */
     public function addProcedureFinishedEmails(Email $procedureFinishedEmail): self
     {
         $this->procedureFinishedEmails[] = $procedureFinishedEmail;
@@ -128,9 +136,9 @@ class ProcedureConfigEmail
     }
 
     /**
-     * @return Email[]|null
+     * @return Email[]
      */
-    public function getProcedureRefusedEmails(): ?array
+    public function getProcedureRefusedEmails(): array
     {
         return $this->procedureRefusedEmails;
     }
@@ -142,14 +150,11 @@ class ProcedureConfigEmail
      */
     public function setProcedureRefusedEmails(?array $procedureRefusedEmails): self
     {
-        $this->procedureRefusedEmails = $procedureRefusedEmails;
+        $this->procedureRefusedEmails = $procedureRefusedEmails ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigEmail
-     */
     public function addProcedureRefusedEmails(Email $procedureRefusedEmail): self
     {
         $this->procedureRefusedEmails[] = $procedureRefusedEmail;
@@ -158,9 +163,9 @@ class ProcedureConfigEmail
     }
 
     /**
-     * @return Email[]|null
+     * @return Email[]
      */
-    public function getProcedureExpiredEmails(): ?array
+    public function getProcedureExpiredEmails(): array
     {
         return $this->procedureExpiredEmails;
     }
@@ -172,14 +177,11 @@ class ProcedureConfigEmail
      */
     public function setProcedureExpiredEmails(?array $procedureExpiredEmails): self
     {
-        $this->procedureExpiredEmails = $procedureExpiredEmails;
+        $this->procedureExpiredEmails = $procedureExpiredEmails ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigEmail
-     */
     public function addProcedureExpiredEmails(Email $procedureExpiredEmail): self
     {
         $this->procedureExpiredEmails[] = $procedureExpiredEmail;
@@ -188,9 +190,9 @@ class ProcedureConfigEmail
     }
 
     /**
-     * @return Email[]|null
+     * @return Email[]
      */
-    public function getProcedureDeletedEmails(): ?array
+    public function getProcedureDeletedEmails(): array
     {
         return $this->procedureDeletedEmails;
     }
@@ -202,14 +204,11 @@ class ProcedureConfigEmail
      */
     public function setProcedureDeletedEmails(?array $procedureDeletedEmails): self
     {
-        $this->procedureDeletedEmails = $procedureDeletedEmails;
+        $this->procedureDeletedEmails = $procedureDeletedEmails ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigEmail
-     */
     public function addProcedureDeletedEmails(Email $procedureDeletedEmail): self
     {
         $this->procedureDeletedEmails[] = $procedureDeletedEmail;
@@ -218,9 +217,9 @@ class ProcedureConfigEmail
     }
 
     /**
-     * @return Email[]|null
+     * @return Email[]
      */
-    public function getMemberFinishedEmails(): ?array
+    public function getMemberFinishedEmails(): array
     {
         return $this->memberFinishedEmails;
     }
@@ -232,14 +231,11 @@ class ProcedureConfigEmail
      */
     public function setMemberFinishedEmails(?array $memberFinishedEmails): self
     {
-        $this->memberFinishedEmails = $memberFinishedEmails;
+        $this->memberFinishedEmails = $memberFinishedEmails ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigEmail
-     */
     public function addMemberFinishedEmails(Email $memberFinishedEmail): self
     {
         $this->memberFinishedEmails[] = $memberFinishedEmail;
@@ -248,9 +244,9 @@ class ProcedureConfigEmail
     }
 
     /**
-     * @return Email[]|null
+     * @return Email[]
      */
-    public function getCommentCreatedEmails(): ?array
+    public function getCommentCreatedEmails(): array
     {
         return $this->commentCreatedEmails;
     }
@@ -262,14 +258,11 @@ class ProcedureConfigEmail
      */
     public function setCommentCreatedEmails(?array $commentCreatedEmails): self
     {
-        $this->commentCreatedEmails = $commentCreatedEmails;
+        $this->commentCreatedEmails = $commentCreatedEmails ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigEmail
-     */
     public function addCommentCreatedEmails(Email $commentCreatedEmail): self
     {
         $this->commentCreatedEmails[] = $commentCreatedEmail;

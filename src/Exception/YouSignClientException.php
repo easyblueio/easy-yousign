@@ -22,10 +22,10 @@ class YouSignClientException extends \Exception
         parent::__construct($clientException->getMessage(), $clientException->getCode());
         $json = (string) $clientException->getResponse()->getBody();
 
-        $datas = json_decode($json, true);
-        if (isset($datas['violations'])) {
+        $data = json_decode($json, true);
+        if (isset($data['violations'])) {
             $violations = [];
-            foreach ($datas['violations'] as $violation) {
+            foreach ($data['violations'] as $violation) {
                 $violations[$violation['propertyPath']] = $violation['message'];
             }
             $this->violations = $violations;

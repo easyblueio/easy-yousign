@@ -25,9 +25,6 @@ class ModeSmsConfiguration
         return $this->content;
     }
 
-    /**
-     * @return ModeSmsConfiguration
-     */
     public function setContent(?string $content): self
     {
         $this->content = $content;

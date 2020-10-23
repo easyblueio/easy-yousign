@@ -36,9 +36,6 @@ class ProcedureConfig
         return $this->email;
     }
 
-    /**
-     * @return ProcedureConfig
-     */
     public function setEmail(ProcedureConfigEmail $email): self
     {
         $this->email = $email;
@@ -51,9 +48,6 @@ class ProcedureConfig
         return $this->webhook;
     }
 
-    /**
-     * @return ProcedureConfig
-     */
     public function setWebhook(ProcedureConfigWebhook $webhook): self
     {
         $this->webhook = $webhook;

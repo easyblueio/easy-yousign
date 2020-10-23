@@ -40,9 +40,6 @@ class Email
         return $this->to;
     }
 
-    /**
-     * @return Email
-     */
     public function setTo(array $to): self
     {
         $this->to = $to;
@@ -55,9 +52,6 @@ class Email
         return $this->subject;
     }
 
-    /**
-     * @return Email
-     */
     public function setSubject(?string $subject): self
     {
         $this->subject = $subject;
@@ -70,9 +64,6 @@ class Email
         return $this->message;
     }
 
-    /**
-     * @return Email
-     */
     public function setMessage(?string $message): self
     {
         $this->message = $message;
@@ -85,9 +76,6 @@ class Email
         return $this->fromName;
     }
 
-    /**
-     * @return Email
-     */
     public function setFromName(?string $fromName): self
     {
         $this->fromName = $fromName;

@@ -28,6 +28,7 @@ final class Factory
         if (null === $client) {
             $client = new Client($apiKey, $env, null, $clientOptions);
         }
+        /* @var Client $client */
         $this->client     = $client;
         $this->serializer = new YouSignSerializer();
     }
