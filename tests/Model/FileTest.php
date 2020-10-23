@@ -51,7 +51,7 @@ class FileTest extends TestCase
         $this->assertSame('signable', $array['type']);
         $this->assertSame('password', $array['password']);
         $this->assertSame('description', $array['description']);
-        $this->assertSame('Y29udGVudA==', $array['content']);
+        $this->assertSame('content', $array['content']);
         $this->assertSame('/procedures/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', $array['procedure']);
         $this->assertSame(0, $array['position']);
     }
