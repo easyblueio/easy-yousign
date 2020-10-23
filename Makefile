@@ -10,7 +10,7 @@ test: vendor
 	php ./vendor/bin/phpunit
 
 test-coverage: vendor
-	php ./vendor/bin/phpunit  --coverage-html var/coverage
+	php ./vendor/bin/phpunit  --coverage-html build/coverage
 
 composer.lock: composer.json
 	$(COMPOSER) update --lock --no-scripts --no-interaction
