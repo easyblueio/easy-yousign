@@ -17,7 +17,7 @@ Written here at [easyblue.io](https://www.easyblue.io/), a french insurtech comp
 [badge-release]: https://img.shields.io/packagist/v/easyblue/easy-yousign.svg?style=flat-square&label=release
 [badge-license]: https://img.shields.io/packagist/l/easyblue/easy-yousign.svg?style=flat-square
 [badge-php]: https://img.shields.io/packagist/php-v/easyblue/easy-yousign.svg?style=flat-square
-[badge-coverage]: https://img.shields.io/badge/Coverage-84.90%25-yellow.svg
+[badge-coverage]: https://img.shields.io/badge/Coverage-87.28%25-yellow.svg
 [badge-downloads]: https://img.shields.io/packagist/dt/easyblue/easy-yousign.svg?style=flat-square&colorB=mediumvioletred
 
 [packagist]: https://packagist.org/packages/easyblue/easy-yousign
@@ -33,10 +33,10 @@ Install this package as a dependency using [Composer](https://getcomposer.org).
 composer require easyblue/easy-yousign
 ```
 
-
 ## Usage
-
 `Procedure` and `File` are supporting for basic mode but you can do a pull request to improve this library.
+
+[Supported features](docs/features.md)
 
 ### Create procedure
 ``` php

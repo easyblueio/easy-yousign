@@ -13,7 +13,7 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: '7.4'
-                    tools: pecl, composer, flex, cs2pr, phpcs
+                    tools: pecl, composer, flex, cs2pr, phpcs, php-cs-fixer
                     ini-values: memory_limit=-1
                     extensions: intl, xsl, mysql, gd, zip, amqp, ctype, json, soap
             -   name: Cache Composer packages
@@ -35,6 +35,8 @@ jobs:
                 run: vendor/bin/phpcpd src
             -   name: Run PHPCS
                 run: phpcs -n --standard=.phpcs.xml src --report=checkstyle | cs2pr
+            -   name: Run PHP-CS-Fixer fix
+                run: php-cs-fixer fix --dry-run --diff --using-cache=no --ansi --format=checkstyle | cs2pr
             -   name: Run PHPStan analysis
                 run: vendor/bin/phpstan analyse --memory-limit=4G -l 4 --error-format=checkstyle | cs2pr
             -   name: Upload artifacts
