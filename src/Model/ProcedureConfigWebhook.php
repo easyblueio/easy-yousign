@@ -28,49 +28,63 @@ class ProcedureConfigWebhook
     /**
      * @Groups({"read", "write"})
      * @SerializedName("procedure.started")
+     *
+     * @var Webhook[]
      */
     protected array $procedureStartedWebhooks = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("procedure.finished")
+     *
+     * @var Webhook[]
      */
     protected array $procedureFinishedWebhooks = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("procedure.refused")
+     *
+     * @var Webhook[]
      */
     protected array $procedureRefusedWebhooks = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("procedure.expired")
+     *
+     * @var Webhook[]
      */
     protected array $procedureExpiredWebhooks = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("procedure.deleted")
+     *
+     * @var Webhook[]
      */
     protected array $procedureDeletedWebhooks = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("member.finished")
+     *
+     * @var Webhook[]
      */
     protected array $memberFinishedWebhooks = [];
 
     /**
      * @Groups({"read", "write"})
      * @SerializedName("comment.created")
+     *
+     * @var Webhook[]
      */
     protected array $commentCreatedWebhooks = [];
 
     /**
-     * @return Webhook[]|null
+     * @return Webhook[]
      */
-    public function getProcedureStartedWebhooks(): ?array
+    public function getProcedureStartedWebhooks(): array
     {
         return $this->procedureStartedWebhooks;
     }
@@ -82,14 +96,11 @@ class ProcedureConfigWebhook
      */
     public function setProcedureStartedWebhooks(?array $procedureStartedWebhooks): self
     {
-        $this->procedureStartedWebhooks = $procedureStartedWebhooks;
+        $this->procedureStartedWebhooks = $procedureStartedWebhooks ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigWebhook
-     */
     public function addProcedureStartedWebhook(Webhook $procedureStartedWebhook): self
     {
         $this->procedureStartedWebhooks[] = $procedureStartedWebhook;
@@ -98,9 +109,9 @@ class ProcedureConfigWebhook
     }
 
     /**
-     * @return Webhook[]|null
+     * @return Webhook[]
      */
-    public function getProcedureFinishedWebhooks(): ?array
+    public function getProcedureFinishedWebhooks(): array
     {
         return $this->procedureFinishedWebhooks;
     }
@@ -112,14 +123,11 @@ class ProcedureConfigWebhook
      */
     public function setProcedureFinishedWebhooks(?array $procedureFinishedWebhooks): self
     {
-        $this->procedureFinishedWebhooks = $procedureFinishedWebhooks;
+        $this->procedureFinishedWebhooks = $procedureFinishedWebhooks ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigWebhook
-     */
     public function addProcedureFinishedWebhooks(Webhook $procedureFinishedWebhook): self
     {
         $this->procedureFinishedWebhooks[] = $procedureFinishedWebhook;
@@ -128,9 +136,9 @@ class ProcedureConfigWebhook
     }
 
     /**
-     * @return Webhook[]|null
+     * @return Webhook[]
      */
-    public function getProcedureRefusedWebhooks(): ?array
+    public function getProcedureRefusedWebhooks(): array
     {
         return $this->procedureRefusedWebhooks;
     }
@@ -142,14 +150,11 @@ class ProcedureConfigWebhook
      */
     public function setProcedureRefusedWebhooks(?array $procedureRefusedWebhooks): self
     {
-        $this->procedureRefusedWebhooks = $procedureRefusedWebhooks;
+        $this->procedureRefusedWebhooks = $procedureRefusedWebhooks ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigWebhook
-     */
     public function addProcedureRefusedWebhooks(Webhook $procedureRefusedWebhook): self
     {
         $this->procedureRefusedWebhooks[] = $procedureRefusedWebhook;
@@ -158,9 +163,9 @@ class ProcedureConfigWebhook
     }
 
     /**
-     * @return Webhook[]|null
+     * @return Webhook[]
      */
-    public function getProcedureExpiredWebhooks(): ?array
+    public function getProcedureExpiredWebhooks(): array
     {
         return $this->procedureExpiredWebhooks;
     }
@@ -172,14 +177,11 @@ class ProcedureConfigWebhook
      */
     public function setProcedureExpiredWebhooks(?array $procedureExpiredWebhooks): self
     {
-        $this->procedureExpiredWebhooks = $procedureExpiredWebhooks;
+        $this->procedureExpiredWebhooks = $procedureExpiredWebhooks ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigWebhook
-     */
     public function addProcedureExpiredWebhooks(Webhook $procedureExpiredWebhook): self
     {
         $this->procedureExpiredWebhooks[] = $procedureExpiredWebhook;
@@ -188,9 +190,9 @@ class ProcedureConfigWebhook
     }
 
     /**
-     * @return Webhook[]|null
+     * @return Webhook[]
      */
-    public function getProcedureDeletedWebhooks(): ?array
+    public function getProcedureDeletedWebhooks(): array
     {
         return $this->procedureDeletedWebhooks;
     }
@@ -202,14 +204,11 @@ class ProcedureConfigWebhook
      */
     public function setProcedureDeletedWebhooks(?array $procedureDeletedWebhooks): self
     {
-        $this->procedureDeletedWebhooks = $procedureDeletedWebhooks;
+        $this->procedureDeletedWebhooks = $procedureDeletedWebhooks ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigWebhook
-     */
     public function addProcedureDeletedWebhooks(Webhook $procedureDeletedWebhook): self
     {
         $this->procedureDeletedWebhooks[] = $procedureDeletedWebhook;
@@ -218,9 +217,9 @@ class ProcedureConfigWebhook
     }
 
     /**
-     * @return Webhook[]|null
+     * @return Webhook[]
      */
-    public function getMemberFinishedWebhooks(): ?array
+    public function getMemberFinishedWebhooks(): array
     {
         return $this->memberFinishedWebhooks;
     }
@@ -232,14 +231,11 @@ class ProcedureConfigWebhook
      */
     public function setMemberFinishedWebhooks(?array $memberFinishedWebhooks): self
     {
-        $this->memberFinishedWebhooks = $memberFinishedWebhooks;
+        $this->memberFinishedWebhooks = $memberFinishedWebhooks ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigWebhook
-     */
     public function addMemberFinishedWebhooks(Webhook $memberFinishedWebhook): self
     {
         $this->memberFinishedWebhooks[] = $memberFinishedWebhook;
@@ -248,9 +244,9 @@ class ProcedureConfigWebhook
     }
 
     /**
-     * @return Webhook[]|null
+     * @return Webhook[]
      */
-    public function getCommentCreatedWebhooks(): ?array
+    public function getCommentCreatedWebhooks(): array
     {
         return $this->commentCreatedWebhooks;
     }
@@ -262,14 +258,11 @@ class ProcedureConfigWebhook
      */
     public function setCommentCreatedWebhooks(?array $commentCreatedWebhooks): self
     {
-        $this->commentCreatedWebhooks = $commentCreatedWebhooks;
+        $this->commentCreatedWebhooks = $commentCreatedWebhooks ?? [];
 
         return $this;
     }
 
-    /**
-     * @return ProcedureConfigWebhook
-     */
     public function addCommentCreatedWebhooks(Webhook $commentCreatedWebhook): self
     {
         $this->commentCreatedWebhooks[] = $commentCreatedWebhook;

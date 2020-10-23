@@ -97,9 +97,6 @@ class Member
         return $this->id;
     }
 
-    /**
-     * @return Member
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -112,9 +109,6 @@ class Member
         return $this->user;
     }
 
-    /**
-     * @return Member
-     */
     public function setUser(?string $user): self
     {
         $this->user = $user;
@@ -127,9 +121,6 @@ class Member
         return $this->type;
     }
 
-    /**
-     * @return Member
-     */
     public function setType(?string $type): self
     {
         $this->type = $type;
@@ -142,9 +133,6 @@ class Member
         return $this->firstname;
     }
 
-    /**
-     * @return Member
-     */
     public function setFirstname(?string $firstname): self
     {
         $this->firstname = $firstname;
@@ -157,9 +145,6 @@ class Member
         return $this->lastname;
     }
 
-    /**
-     * @return Member
-     */
     public function setLastname(?string $lastname): self
     {
         $this->lastname = $lastname;
@@ -172,9 +157,6 @@ class Member
         return $this->email;
     }
 
-    /**
-     * @return Member
-     */
     public function setEmail(?string $email): self
     {
         $this->email = $email;
@@ -187,9 +169,6 @@ class Member
         return $this->phone;
     }
 
-    /**
-     * @return Member
-     */
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
@@ -202,9 +181,6 @@ class Member
         return $this->position;
     }
 
-    /**
-     * @return Member
-     */
     public function setPosition(?int $position): self
     {
         $this->position = $position;
@@ -217,9 +193,6 @@ class Member
         return $this->status;
     }
 
-    /**
-     * @return Member
-     */
     public function setStatus(?string $status): self
     {
         $this->status = $status;
@@ -232,9 +205,6 @@ class Member
         return $this->fileObjects;
     }
 
-    /**
-     * @return Member
-     */
     public function setFileObjects(array $fileObjects): self
     {
         $this->fileObjects = $fileObjects;
@@ -242,9 +212,6 @@ class Member
         return $this;
     }
 
-    /**
-     * @return Member
-     */
     public function addFileObject(FileObject $fileObject): self
     {
         $this->fileObjects[] = $fileObject;
@@ -257,9 +224,6 @@ class Member
         return $this->comment;
     }
 
-    /**
-     * @return Member
-     */
     public function setComment(?string $comment): self
     {
         $this->comment = $comment;
@@ -272,9 +236,6 @@ class Member
         return $this->procedure;
     }
 
-    /**
-     * @return Member
-     */
     public function setProcedure(?string $procedure): self
     {
         $this->procedure = $procedure;
@@ -287,9 +248,6 @@ class Member
         return $this->operationLevel;
     }
 
-    /**
-     * @return Member
-     */
     public function setOperationLevel(?string $operationLevel): self
     {
         $this->operationLevel = $operationLevel;
@@ -302,9 +260,6 @@ class Member
         return $this->operationCustomModes;
     }
 
-    /**
-     * @return Member
-     */
     public function setOperationCustomModes(array $operationCustomModes): self
     {
         $this->operationCustomModes = $operationCustomModes;
@@ -317,9 +272,6 @@ class Member
         return $this->modeSmsConfiguration;
     }
 
-    /**
-     * @return Member
-     */
     public function setModeSmsConfiguration(?ModeSmsConfiguration $modeSmsConfiguration): self
     {
         $this->modeSmsConfiguration = $modeSmsConfiguration;

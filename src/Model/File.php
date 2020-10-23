@@ -87,9 +87,6 @@ class File
         return $this->id;
     }
 
-    /**
-     * @return File
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -102,9 +99,6 @@ class File
         return $this->name;
     }
 
-    /**
-     * @return File
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -117,9 +111,6 @@ class File
         return $this->type;
     }
 
-    /**
-     * @return File
-     */
     public function setType(?string $type): self
     {
         $this->type = $type;
@@ -132,9 +123,6 @@ class File
         return $this->password;
     }
 
-    /**
-     * @return File
-     */
     public function setPassword(?string $password): self
     {
         $this->password = $password;
@@ -147,9 +135,6 @@ class File
         return $this->description;
     }
 
-    /**
-     * @return File
-     */
     public function setDescription(?string $description): self
     {
         $this->description = $description;
@@ -157,15 +142,12 @@ class File
         return $this;
     }
 
-    public function getmetadata(): ?array
+    public function getMetadata(): ?array
     {
         return $this->metadata;
     }
 
-    /**
-     * @return File
-     */
-    public function setmetadata(?array $metadata): self
+    public function setMetadata(?array $metadata): self
     {
         $this->metadata = $metadata;
 
@@ -177,9 +159,6 @@ class File
         return $decoding && isset($this->content) ? Base64Helper::base64decode($this->content) : $this->content;
     }
 
-    /**
-     * @return File
-     */
     public function setContent(?string $content, $encoding = true): self
     {
         $this->content = $encoding ? Base64Helper::base64Encode($content) : false;
@@ -192,9 +171,6 @@ class File
         return $this->procedure;
     }
 
-    /**
-     * @return File
-     */
     public function setProcedure(?string $procedure): self
     {
         $this->procedure = $procedure;
@@ -207,9 +183,6 @@ class File
         return $this->workspace;
     }
 
-    /**
-     * @return File
-     */
     public function setWorkspace(?string $workspace): self
     {
         $this->workspace = $workspace;
@@ -222,9 +195,6 @@ class File
         return $this->creator;
     }
 
-    /**
-     * @return File
-     */
     public function setCreator(?string $creator): self
     {
         $this->creator = $creator;
@@ -237,9 +207,6 @@ class File
         return $this->hash;
     }
 
-    /**
-     * @return File
-     */
     public function setHash(?string $hash): self
     {
         $this->hash = $hash;
@@ -252,9 +219,6 @@ class File
         return $this->position;
     }
 
-    /**
-     * @return File
-     */
     public function setPosition($position)
     {
         $this->position = $position;
@@ -267,9 +231,6 @@ class File
         return $this->contentType;
     }
 
-    /**
-     * @return File
-     */
     public function setContentType(?string $contentType): self
     {
         $this->contentType = $contentType;
