@@ -1,40 +1,49 @@
 {
-  "name": "easyblue/easy-yousign",
-  "type": "library",
-  "description": "",
-  "keywords": [],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "easyblue"
+    "name": "easyblue/easy-yousign",
+    "type": "library",
+    "description": "",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "easyblue"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "doctrine/annotations": "^1.10",
+        "guzzlehttp/guzzle": ">=6.0",
+        "symfony/property-access": "^5.1",
+        "symfony/property-info": "^5.1",
+        "symfony/serializer": "^5.1"
+    },
+    "require-dev": {
+        "brainmaestro/composer-git-hooks": "^2.8",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpmd/phpmd": "^2.9",
+        "phpstan/phpstan": "^0.12.31",
+        "phpunit/phpunit": "^9.1",
+        "sebastian/phpcpd": "^5.0"
+    },
+    "extra": {
+        "hooks": {
+            "pre-commit": [
+                "sed -i '' \"s/Coverage-[0-9\\.]*/Coverage\\-$(php ./vendor/bin/phpunit  --coverage-text | grep Lines | head -n 1 | perl -n -e '/Lines\\:\\ +([0-9\\.]*)/ && print $1')/\" README.md",
+                "git add README.md"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Easyblue\\YouSign\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Easyblue\\YouSign\\tests\\": "tests/"
+        }
     }
-  ],
-  "require": {
-    "php": "^7.4",
-    "doctrine/annotations": "^1.10",
-    "guzzlehttp/guzzle": ">=6.0",
-    "symfony/property-access": "^5.1",
-    "symfony/property-info": "^5.1",
-    "symfony/serializer": "^5.1"
-  },
-  "require-dev": {
-    "phpstan/phpstan": "^0.12.31",
-    "sebastian/phpcpd": "^5.0",
-    "phpmd/phpmd": "^2.9",
-    "friendsofphp/php-cs-fixer": "^2.16",
-    "phpunit/phpunit": "^9.1"
-  },
-  "config": {
-    "sort-packages": true
-  },
-  "autoload": {
-    "psr-4": {
-      "Easyblue\\YouSign\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Easyblue\\YouSign\\tests\\": "tests/"
-    }
-  }
 }

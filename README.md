@@ -9,7 +9,7 @@ Written here at [easyblue.io](https://www.easyblue.io/), a french insurtech comp
 [![Latest Version][badge-release]][packagist]
 [![Software License][badge-license]][license]
 [![PHP Version][badge-php]][php]
-<!--[![Coverage Status][badge-coverage]][coverage]-->
+![Coverage Status][badge-coverage]
 [![Total Downloads][badge-downloads]][downloads]
 [![github issues](https://img.shields.io/github/issues/easyblueio/easy-cache-react.svg?style=flat-square)](https://github.com/easyblueio/easy-yousign/issues)
 [![github closed issues](https://img.shields.io/github/issues-closed/easyblueio/easy-cache-react.svg?style=flat-square&colorB=44cc11)](https://github.com/easyblueio/easy-yousign/issues?q=is%3Aissue+is%3Aclosed)
@@ -17,13 +17,12 @@ Written here at [easyblue.io](https://www.easyblue.io/), a french insurtech comp
 [badge-release]: https://img.shields.io/packagist/v/easyblue/easy-yousign.svg?style=flat-square&label=release
 [badge-license]: https://img.shields.io/packagist/l/easyblue/easy-yousign.svg?style=flat-square
 [badge-php]: https://img.shields.io/packagist/php-v/easyblue/easy-yousign.svg?style=flat-square
-[badge-coverage]: https://img.shields.io/coveralls/github/easyblue/easy-yousign/master.svg?style=flat-square
+[badge-coverage]: https://img.shields.io/badge/Coverage-84.90%25-yellow.svg
 [badge-downloads]: https://img.shields.io/packagist/dt/easyblue/easy-yousign.svg?style=flat-square&colorB=mediumvioletred
 
 [packagist]: https://packagist.org/packages/easyblue/easy-yousign
 [license]: https://github.com/easyblueio/easy-yousign/blob/master/LICENSE
 [php]: https://php.net
-[coverage]: https://coveralls.io/r/easyblue/easy-yousign?branch=master
 [downloads]: https://packagist.org/packages/easyblue/easy-yousign
 
 ## Installation
