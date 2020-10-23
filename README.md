@@ -17,7 +17,7 @@ Written here at [easyblue.io](https://www.easyblue.io/), a french insurtech comp
 [badge-release]: https://img.shields.io/packagist/v/easyblue/easy-yousign.svg?style=flat-square&label=release
 [badge-license]: https://img.shields.io/packagist/l/easyblue/easy-yousign.svg?style=flat-square
 [badge-php]: https://img.shields.io/packagist/php-v/easyblue/easy-yousign.svg?style=flat-square
-[badge-coverage]: https://img.shields.io/badge/Coverage-87.28%25-yellow.svg
+[badge-coverage]: https://img.shields.io/badge/Coverage-87.24%25-yellow.svg
 [badge-downloads]: https://img.shields.io/packagist/dt/easyblue/easy-yousign.svg?style=flat-square&colorB=mediumvioletred
 
 [packagist]: https://packagist.org/packages/easyblue/easy-yousign
@@ -45,10 +45,10 @@ use Easyblue\YouSign\Model\File;
 use Easyblue\YouSign\Model\FileObject;
 use Easyblue\YouSign\Model\Member;
 use Easyblue\YouSign\Model\Procedure;
+use Easyblue\YouSign\Http\Client;
 
 $ysApiKey = 'test';
-$ysApiUrl = 'https://staging-api.yousign.com'; 
-$factory = Factory::create($ysApiKey, $ysApiUrl);
+$factory = new Factory($ysApiKey, Client::ENV_STAGING);
 
 $member = (new Member())
     ->setFirstname('John')
@@ -79,10 +79,10 @@ $procedure = $factory->procedure()->create($procedure);
 ``` php
 use Easyblue\YouSign\Factory\Factory;
 use Easyblue\YouSign\Model\Procedure;
+use Easyblue\YouSign\Http\Client;
 
 $ysApiKey = 'test';
-$ysApiUrl = 'https://staging-api.yousign.com'; 
-$factory = Factory::create($ysApiKey, $ysApiUrl);
+$factory = new Factory($ysApiKey, Client::ENV_STAGING);
 
 /** Procedure $procedure **/
 $procedure = $factory->procedure()->get('/procedures/9d1ede2b-5687-4440-bdc8-dd0bc64f668c');
@@ -92,10 +92,10 @@ $procedure = $factory->procedure()->get('/procedures/9d1ede2b-5687-4440-bdc8-dd0
 ``` php
 use Easyblue\YouSign\Factory\Factory;
 use Easyblue\YouSign\Model\File;
+use Easyblue\YouSign\Http\Client;
 
 $ysApiKey = 'test';
-$ysApiUrl = 'https://staging-api.yousign.com'; 
-$factory = Factory::create($ysApiKey, $ysApiUrl);
+$factory = new Factory($ysApiKey/*, Client::ENV_STAGING*/);
 
 // Pdf content as binary file
 $content = $factory->file()->download('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c');

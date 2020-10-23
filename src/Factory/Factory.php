@@ -23,7 +23,7 @@ final class Factory
     protected Client $client;
     protected YouSignSerializer $serializer;
 
-    public function __construct(string $apiKey, string $env, Client $client = null, array $clientOptions = [])
+    public function __construct(string $apiKey, string $env = Client::ENV_STAGING, Client $client = null, array $clientOptions = [])
     {
         if (null === $client) {
             $client = new Client($apiKey, $env, null, $clientOptions);
@@ -42,11 +42,6 @@ final class Factory
     public function getClient(): Client
     {
         return $this->client;
-    }
-
-    public static function create(string $apiKey = '', string $baseUrl = 'https://staging-api.yousign.com', Client $client = null, array $clientOptions = []): self
-    {
-        return new static($apiKey, $baseUrl, $client, $clientOptions);
     }
 
     private function getResourcesClass(string $name): string

@@ -22,7 +22,7 @@ class FactoryTest extends TestCase
 
     public function setUp(): void
     {
-        $this->factory = Factory::create();
+        $this->factory = new Factory('');
     }
 
     public function testGetClient(): void
