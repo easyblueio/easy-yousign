@@ -1,10 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 /*
- * This file is part of the Easyblue API project.
- * (c) Easyblue <support@easyblue.io>
+ * This file is part of the Easyblue YouSign project.
+ * (c) Easyblue <dev@easyblue.io>
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -43,11 +43,10 @@ class ClientTest extends TestCase
 
     public function testRequestWithClientException()
     {
-        $request = $this->createMock(RequestInterface::class);
+        $request  = $this->createMock(RequestInterface::class);
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getBody')
             ->willReturn(json_encode(['violations' => [['propertyPath' => 'name', 'message' => 'An error occurred']]]));
-
 
         $this->client->method('request')
             ->will($this->throwException(new ClientException('An error', $request, $response)));
