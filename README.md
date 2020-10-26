@@ -102,6 +102,9 @@ $content = $factory->file()->download('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f66
 $content = $factory->file()->download('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', false);
 ```
 
+## Framework
+[Symfony](docs/symfony.md)
+
 ## Contributing
 
 Contributions are welcome! Before contributing to this project, familiarize
@@ -122,14 +125,10 @@ Now, you are ready to develop!
 #### Coding Standards
 
 This project follows a superset of [PSR-12](https://www.php-fig.org/psr/psr-12/)
-coding standards, enforced by [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
-The project PHP_CodeSniffer configuration may be found in `phpcs.xml.dist`.
+coding standards, enforced by [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer).
+The project PHP_CodeSniffer configuration may be found in `.php_cs`.
 
-lint-staged will run PHP_CodeSniffer before committing. It will attempt to fix
-any errors it can, and it will reject the commit if there are any un-fixable
-issues. Many issues can be fixed automatically and will be done so pre-commit.
-
-You may lint the entire codebase using PHP_CodeSniffer with the following
+You may lint the entire codebase using PHP-CS-Fixer with the following
 commands:
 
 ``` bash
@@ -138,13 +137,9 @@ make php-cs-fixer
 
 #### Static Analysis
 
-This project uses a combination of [PHPStan](https://github.com/phpstan/phpstan) to provide static analysis of PHP
-code. Configurations for these are in `phpstan.neon.dist`,
+This project uses a combination of [PHPStan](https://github.com/phpstan/phpstan), [phpmd](https://github.com/phpmd/phpmd), [phpcpd](https://github.com/sebastianbergmann/phpcpd) to provide static analysis of PHP
+code. Configurations for these are in `phpstan.neon.dist`, `.phpmd.xml`.
 respectively.
-
-lint-staged will run PHPStan before committing. The pre-commit hook
-does not attempt to fix any static analysis errors. Instead, the commit will
-fail, and you must fix the errors manually.
 
 You may run static analysis manually across the whole codebase with the
 following command:
@@ -152,6 +147,19 @@ following command:
 ``` bash
 # Static analysis
 make phpspan
+make phpmd
+make phpcpd
+```
+
+
+#### Pre-commit
+This project use [composer-git-hooks](https://github.com/BrainMaestro/composer-git-hooks).
+It will attempt to fix any errors it can, and it will reject the commit if there are any un-fixable
+issues. Many issues can be fixed automatically and will be done so pre-commit.
+
+#### Register pre-commit at first usage
+``` bash
+vendor/bin/cghooks add
 ```
 
 ### Project Structure

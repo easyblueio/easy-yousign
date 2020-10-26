@@ -29,8 +29,7 @@
     "extra": {
         "hooks": {
             "pre-commit": [
-                "sed -i '' \"s/Coverage-[0-9\\.]*/Coverage\\-$(php ./vendor/bin/phpunit  --coverage-text | grep Lines | head -n 1 | perl -n -e '/Lines\\:\\ +([0-9\\.]*)/ && print $1')/\" README.md",
-                "git add README.md"
+                "make pre-commit && sed -i '' \"s/Coverage-[0-9\\.]*/Coverage\\-$(php ./vendor/bin/phpunit  --coverage-text | grep Lines | head -n 1 | perl -n -e '/Lines\\:\\ +([0-9\\.]*)/ && print $1')/\" README.md && git add README.md"
             ]
         }
     },
