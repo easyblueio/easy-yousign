@@ -34,9 +34,6 @@ composer-update:
 phpmd: vendor ## PHP Mess Detector (https://phpmd.org)
 	php ./vendor/bin/phpmd src text .phpmd.xml --exclude src/Migrations
 
-php_codesnifer: vendor ## PHP_CodeSnifer (https://github.com/squizlabs/PHP_CodeSniffer)
-	php ./vendor/bin/phpcs -v --standard=.phpcs.xml src
-
 phpcpd: vendor ## PHP Copy/Paste Detector (https://github.com/sebastianbergmann/phpcpd)
 	php ./vendor/bin/phpcpd src
 
@@ -49,7 +46,7 @@ php-cs-fixer: vendor ## php-cs-fixer (http://cs.sensiolabs.org)
 apply-php-cs-fixer: vendor ## apply php-cs-fixer fixes
 	php ./vendor/bin/php-cs-fixer fix --using-cache=no --verbose --diff
 
-pre-commit: phpmd phpcpd apply-php-cs-fixer phpstan
+pre-commit: phpmd phpcpd php-cs-fixer phpstan
 
 .DEFAULT_GOAL := help
 
