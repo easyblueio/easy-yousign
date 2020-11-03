@@ -44,6 +44,10 @@ class Client
         $this->client = $client;
     }
 
+    /**
+     * @throws YouSignClientException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function request(string $method, string $endpoint, array $options = [])
     {
         $headers = ['Authorization' => 'Bearer '.$this->key];
