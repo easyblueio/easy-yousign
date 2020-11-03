@@ -15,7 +15,7 @@ use GuzzleHttp\Exception\ClientException;
 
 class YouSignClientException extends \Exception
 {
-    protected array $violations = [];
+    public array $violations = [];
 
     public function __construct(ClientException $clientException)
     {
