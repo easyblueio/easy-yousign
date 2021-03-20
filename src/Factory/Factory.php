@@ -20,8 +20,8 @@ use Easyblue\YouSign\Serializer\YouSignSerializer;
  */
 final class Factory
 {
-    protected Client $client;
-    protected YouSignSerializer $serializer;
+    private Client $client;
+    private YouSignSerializer $serializer;
 
     public function __construct(string $apiKey, string $env = Client::ENV_STAGING, Client $client = null, array $clientOptions = [])
     {

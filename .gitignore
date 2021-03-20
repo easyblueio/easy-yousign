@@ -6,3 +6,4 @@ phpunit.xml
 vendor/
 yarn.lock
 tests/Integration
+.php-version

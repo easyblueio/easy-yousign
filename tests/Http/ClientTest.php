@@ -23,7 +23,7 @@ class ClientTest extends TestCase
 {
     private $client;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->client = $this->createMock(GuzzleClient::class);
     }
