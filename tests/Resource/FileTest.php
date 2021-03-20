@@ -23,7 +23,7 @@ class FileTest extends TestCase
     private $serializer;
     private $client;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->client     = $this->createMock(Client::class);
         $this->serializer = new YouSignSerializer();
