@@ -268,7 +268,7 @@ class FileObject
 
     public function getFileId(): ?string
     {
-        if ($this->getFile()) {
+        if (null !== $this->getFile()) {
             return $this->getFile()->getId();
         }
 

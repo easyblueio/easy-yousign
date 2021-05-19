@@ -13,6 +13,7 @@ namespace Easyblue\YouSign\tests\Model;
 
 use Easyblue\YouSign\Model\Email;
 use Easyblue\YouSign\Model\Procedure;
+use Easyblue\YouSign\Model\ProcedureConfig;
 use Easyblue\YouSign\Model\ProcedureConfigEmail;
 use Easyblue\YouSign\Model\ProcedureConfigWebhook;
 use Easyblue\YouSign\Model\Webhook;
@@ -23,6 +24,7 @@ class ProcedureTest extends TestCase
 {
     public function testSerialize(): void
     {
+        /** @var string */
         $json = file_get_contents(__DIR__.'/../Fixtures/procedure.json');
 
         $serializer = new YouSignSerializer();
@@ -31,9 +33,9 @@ class ProcedureTest extends TestCase
         $this->assertSame('/procedures/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', $procedure->getId());
         $this->assertSame('string', $procedure->getName());
         $this->assertSame('string', $procedure->getDescription());
-        $this->assertSame('2020-10-14T15:45:31+00:00', $procedure->getCreatedAt()->format('c'));
-        $this->assertSame('2020-10-14T15:45:31+00:00', $procedure->getUpdatedAt()->format('c'));
-        $this->assertSame('2020-10-14T15:45:31+00:00', $procedure->getExpiresAt()->format('c'));
+        $this->assertSame('2020-10-14T15:45:31+00:00', null !== $procedure->getCreatedAt() ? $procedure->getCreatedAt()->format('c') : null);
+        $this->assertSame('2020-10-14T15:45:31+00:00', null !== $procedure->getUpdatedAt() ? $procedure->getUpdatedAt()->format('c') : null);
+        $this->assertSame('2020-10-14T15:45:31+00:00', null !== $procedure->getExpiresAt() ? $procedure->getExpiresAt()->format('c') : null);
         $this->assertSame('draft', $procedure->getStatus());
         $this->assertSame('/users/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', $procedure->getCreator());
         $this->assertSame('string', $procedure->getCreatorFirstName());
@@ -45,15 +47,21 @@ class ProcedureTest extends TestCase
         $this->assertTrue($procedure->isRelatedFilesEnable());
         $this->assertFalse($procedure->isArchive());
 
-        /** @var Email $emailConfig */
-        $emailConfig = $procedure->getConfig()->getEmail()->getProcedureStartedEmails()[0];
+        /** @var ProcedureConfig */
+        $procedureConfig = $procedure->getConfig();
+        /** @var ProcedureConfigEmail */
+        $procedureConfigEmail = $procedureConfig->getEmail();
+        /** @var Email */
+        $emailConfig = $procedureConfigEmail->getProcedureStartedEmails()[0];
         $this->assertSame('string', $emailConfig->getMessage());
         $this->assertSame('string', $emailConfig->getFromName());
         $this->assertSame('string', $emailConfig->getSubject());
         $this->assertSame(['@members'], $emailConfig->getTo());
 
-        /** @var Webhook $webhookConfig */
-        $webhookConfig = $procedure->getConfig()->getWebhook()->getProcedureStartedWebhooks()[0];
+        /** @var ProcedureConfigWebhook */
+        $procedureConfigWebhook = $procedureConfig->getWebhook();
+        /** @var Webhook */
+        $webhookConfig = $procedureConfigWebhook->getProcedureStartedWebhooks()[0];
         $this->assertSame('string', $webhookConfig->getUrl());
         $this->assertSame('GET', $webhookConfig->getMethod());
         $this->assertSame(['X-Yousign-Custom-Header' => 'Test value'], $webhookConfig->getHeaders());

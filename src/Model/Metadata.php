@@ -14,5 +14,6 @@ namespace Easyblue\YouSign\Model;
 class Metadata
 {
     protected string $key;
+    /** @var int|string|bool|array */
     protected $value;
 }

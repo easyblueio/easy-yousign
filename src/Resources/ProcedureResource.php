@@ -15,8 +15,9 @@ use Easyblue\YouSign\Model\Procedure;
 
 class ProcedureResource extends AbstractResource
 {
-    const ENDPOINT = '/procedures';
+    public const ENDPOINT = '/procedures';
 
+    /** @return mixed */
     public function all()
     {
         $response =  $this->client->request('GET', self::ENDPOINT);
@@ -40,6 +41,7 @@ class ProcedureResource extends AbstractResource
         return $this->serializer->deserialize($json, Procedure::class);
     }
 
+    /** @return mixed */
     public function get(string $id)
     {
         $response =  $this->client->request('GET', $id);

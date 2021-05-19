@@ -16,14 +16,14 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 
 class ProcedureConfigWebhook
 {
-    const PROCEDURE_STARTED  = 'procedure.started';
-    const PROCEDURE_FINISHED = 'procedure.finished';
-    const PROCEDURE_REFUSED  = 'procedure.refused';
-    const PROCEDURE_EXPIRED  = 'procedure.expired';
-    const PROCEDURE_DELETED  = 'procedure.deleted';
-    const MEMBER_STARTED     = 'member.started';
-    const MEMBER_FINISHED    = 'member.finished';
-    const COMMENT_CREATED    = 'comment.created';
+    public const PROCEDURE_STARTED  = 'procedure.started';
+    public const PROCEDURE_FINISHED = 'procedure.finished';
+    public const PROCEDURE_REFUSED  = 'procedure.refused';
+    public const PROCEDURE_EXPIRED  = 'procedure.expired';
+    public const PROCEDURE_DELETED  = 'procedure.deleted';
+    public const MEMBER_STARTED     = 'member.started';
+    public const MEMBER_FINISHED    = 'member.finished';
+    public const COMMENT_CREATED    = 'comment.created';
 
     /**
      * @Groups({"read", "write"})

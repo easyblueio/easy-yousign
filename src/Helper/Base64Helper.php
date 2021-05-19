@@ -13,17 +13,18 @@ namespace Easyblue\YouSign\Helper;
 
 class Base64Helper
 {
-    public static function isBase64Encoded($data)
+    public static function isBase64Encoded(string $data): bool
     {
-        return preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $data) > 0;
+        return ((int) preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $data)) > 0;
     }
 
-    public static function base64Encode($data)
+    public static function base64Encode(string $data): string
     {
         return base64_encode($data);
     }
 
-    public static function base64decode($data)
+    /** @return string|false */
+    public static function base64decode(string $data)
     {
         return base64_decode($data, true);
     }

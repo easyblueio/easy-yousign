@@ -15,7 +15,7 @@ use Easyblue\YouSign\Model\File;
 
 class FileResource extends AbstractResource
 {
-    const ENDPOINT = '/files';
+    public const ENDPOINT = '/files';
 
     /**
      * @return File[]
@@ -51,7 +51,7 @@ class FileResource extends AbstractResource
         return $this->serializer->deserialize($json, File::class);
     }
 
-    public function download(string $id, $asBinary = true): string
+    public function download(string $id, bool $asBinary = true): string
     {
         $id       = str_replace('/files/', '', $id);
         $endPoint =  sprintf('/files/%s/download', $id);

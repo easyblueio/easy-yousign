@@ -6,7 +6,7 @@ This file is part of the Easyblue YouSign project.
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 OEF;
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
@@ -25,24 +25,28 @@ return PhpCsFixer\Config::create()
         'phpdoc_order' => true,
         'phpdoc_separation' => true,
         'phpdoc_indent' => true,
-        'phpdoc_inline_tag' => true,
+        'general_phpdoc_tag_rename' => true,
+        'phpdoc_inline_tag_normalizer' => true,
+        'phpdoc_tag_type' => true,
         'no_empty_phpdoc' => true,
         'strict_comparison' => true,
         'strict_param' => true,
         'single_quote' => true,
         'yoda_style' => true,
         'no_extra_blank_lines' => [
-            'break',
-            'continue',
-            'extra',
-            'return',
-            'throw',
-            'use',
-            'parenthesis_brace_block',
-            'square_brace_block',
-            'curly_brace_block',
+            'tokens' => [
+                'break',
+                'continue',
+                'extra',
+                'return',
+                'throw',
+                'use',
+                'parenthesis_brace_block',
+                'square_brace_block',
+                'curly_brace_block',
+            ],
         ],
-        'no_short_echo_tag' => true,
+        'echo_tag_syntax' => true,
         'no_unreachable_default_argument_value' => true,
         'no_useless_else' => true,
         'no_useless_return' => true,
