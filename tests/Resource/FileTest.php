@@ -15,13 +15,15 @@ use Easyblue\YouSign\Http\Client;
 use Easyblue\YouSign\Model\File;
 use Easyblue\YouSign\Resources\FileResource;
 use Easyblue\YouSign\Serializer\YouSignSerializer;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\MessageInterface;
 
 class FileTest extends TestCase
 {
-    private $serializer;
-    private $client;
+    private YouSignSerializer $serializer;
+    /** @var MockObject|Client */
+    private MockObject $client;
 
     protected function setUp(): void
     {
@@ -29,8 +31,9 @@ class FileTest extends TestCase
         $this->serializer = new YouSignSerializer();
     }
 
-    public function testAll()
+    public function testAll(): void
     {
+        /** @var MockObject|MessageInterface $response */
         $response = $this->createMock(MessageInterface::class);
         $response->method('getBody')
            ->willReturn(file_get_contents(__DIR__.'/../Fixtures/files.json'));
@@ -44,8 +47,9 @@ class FileTest extends TestCase
         $this->assertSame('string', $files[0]->getName());
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
+        /** @var MockObject|MessageInterface $response */
         $response = $this->createMock(MessageInterface::class);
         $response->method('getBody')
             ->willReturn(file_get_contents(__DIR__.'/../Fixtures/file.json'));
@@ -58,8 +62,9 @@ class FileTest extends TestCase
         $this->assertSame('string', $file->getName());
     }
 
-    public function testGet()
+    public function testGet(): void
     {
+        /** @var MockObject|MessageInterface $response */
         $response = $this->createMock(MessageInterface::class);
         $response->method('getBody')
             ->willReturn(file_get_contents(__DIR__.'/../Fixtures/file.json'));
@@ -72,8 +77,9 @@ class FileTest extends TestCase
         $this->assertSame('/files/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', $file->getId());
     }
 
-    public function testDownloadAsBinary()
+    public function testDownloadAsBinary(): void
     {
+        /** @var MockObject|MessageInterface $response */
         $response = $this->createMock(MessageInterface::class);
         $response->method('getBody')
             ->willReturn('content');
@@ -86,8 +92,9 @@ class FileTest extends TestCase
         $this->assertSame('content', $content);
     }
 
-    public function testDownloadAsBase64()
+    public function testDownloadAsBase64(): void
     {
+        /** @var MockObject|MessageInterface $response */
         $response = $this->createMock(MessageInterface::class);
         $response->method('getBody')
                  ->willReturn('content');

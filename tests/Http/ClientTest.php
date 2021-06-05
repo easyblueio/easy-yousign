@@ -9,50 +9,53 @@ declare(strict_types = 1);
  * file that was distributed with this source code.
  */
 
-namespace Easyblue\YouSign\Test\Resource;
+namespace Easyblue\YouSign\Test\Http;
 
 use Easyblue\YouSign\Exception\YouSignClientException;
 use Easyblue\YouSign\Http\Client;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class ClientTest extends TestCase
 {
-    private $client;
+    /** @var GuzzleClient|MockObject */
+    private MockObject $guzzleClient;
+
+    private Client $client;
 
     protected function setUp(): void
     {
-        $this->client = $this->createMock(GuzzleClient::class);
+        $this->guzzleClient = $this->createMock(GuzzleClient::class);
+        $this->client       = new Client('test', Client::ENV_STAGING, $this->guzzleClient);
     }
 
-    public function testRequest()
+    public function testRequest(): void
     {
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getBody')
             ->willReturn('content');
 
-        $this->client->method('request')
+        $this->guzzleClient->method('request')
             ->willReturn($response);
 
-        $client = new Client('test', Client::ENV_STAGING, $this->client);
-        $this->assertSame('content', $client->request('GET', '/test')->getBody());
+        $this->assertSame('content', $this->client->request('GET', '/test')->getBody());
     }
 
-    public function testRequestWithClientException()
+    public function testRequestWithClientException(): void
     {
         $request  = $this->createMock(RequestInterface::class);
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getBody')
             ->willReturn(json_encode(['violations' => [['propertyPath' => 'name', 'message' => 'An error occurred']]]));
 
-        $this->client->method('request')
+        $this->guzzleClient->method('request')
             ->will($this->throwException(new ClientException('An error', $request, $response)));
 
         $this->expectException(YouSignClientException::class);
-        $client = new Client('test', Client::ENV_STAGING, $this->client);
-        $client->request('GET', '/test');
+        $this->client->request('GET', '/test');
     }
 }

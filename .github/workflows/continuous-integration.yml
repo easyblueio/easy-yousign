@@ -13,9 +13,9 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: '8.0.3'
-                    tools: pecl, composer, flex, cs2pr, php-cs-fixer
+                    tools: pecl, composer, flex, cs2pr, php-cs-fixer, phpmd, phpcpd, phpstan
                     ini-values: memory_limit=-1
-                    extensions: intl, xsl, mysql, gd, zip, amqp, ctype, json, soap
+                    extensions: xsl, zip, ctype, json
             -   name: Cache Composer packages
                 uses: actions/cache@v1
                 with:
@@ -30,13 +30,13 @@ jobs:
             -   name: Run PHPUnit units tests
                 run: vendor/bin/phpunit --testdox
             -   name: Run PHPMD
-                run: vendor/bin/phpmd src text .phpmd.xml
+                run: phpmd src text .phpmd.xml
             -   name: Run PHPCPD
-                run: vendor/bin/phpcpd src
+                run: phpcpd src
             -   name: Run PHP-CS-Fixer fix
                 run: php-cs-fixer fix --dry-run --diff --using-cache=no --ansi --format=checkstyle | cs2pr
             -   name: Run PHPStan analysis
-                run: vendor/bin/phpstan analyse --memory-limit=4G -l 4 --error-format=checkstyle | cs2pr
+                run: phpstan analyse --memory-limit=4G -l 8 src --error-format=checkstyle | cs2pr
             -   name: Upload artifacts
                 if: always()
                 uses: actions/upload-artifact@v1

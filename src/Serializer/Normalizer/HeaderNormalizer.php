@@ -18,17 +18,20 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 class HeaderNormalizer implements DenormalizerInterface
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @throws NotNormalizableValueException
      */
     public function denormalize($data, string $type, string $format = null, array $context = [])
     {
-        return new Header(json_decode(json_encode($data), true));
+        /** @var string $encodedJSON */
+        $encodedJSON = json_encode($data);
+
+        return new Header(json_decode($encodedJSON, true));
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function supportsDenormalization($data, string $type, string $format = null)
     {

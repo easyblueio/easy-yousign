@@ -14,14 +14,15 @@ namespace Easyblue\YouSign\Http;
 use Easyblue\YouSign\Exception\YouSignClientException;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
+use Psr\Http\Message\MessageInterface;
 
 class Client
 {
-    const ENV_PROD    = 'prod';
-    const ENV_STAGING = 'staging';
+    public const ENV_PROD    = 'prod';
+    public const ENV_STAGING = 'staging';
 
-    const URL_PROD    = 'https://api.yousign.com';
-    const URL_STAGING = 'https://staging-api.yousign.com';
+    public const URL_PROD    = 'https://api.yousign.com';
+    public const URL_STAGING = 'https://staging-api.yousign.com';
 
     public string $key;
     public string $baseUrl;
@@ -48,7 +49,7 @@ class Client
      * @throws YouSignClientException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function request(string $method, string $endpoint, array $options = [])
+    public function request(string $method, string $endpoint, array $options = []): MessageInterface
     {
         $headers = ['Authorization' => 'Bearer '.$this->key];
 

@@ -19,6 +19,7 @@ class FileTest extends TestCase
 {
     public function testSerialize(): void
     {
+        /** @var string */
         $json = file_get_contents(__DIR__.'/../Fixtures/file.json');
 
         $serializer = new YouSignSerializer();
@@ -29,8 +30,8 @@ class FileTest extends TestCase
         $this->assertSame('signable', $file->getType());
         $this->assertSame('application/pdf', $file->getContentType());
         $this->assertSame('string', $file->getDescription());
-        $this->assertSame('2020-04-23T18:25:43+00:00', $file->getCreatedAt()->format('c'));
-        $this->assertSame('2020-04-23T18:25:43+00:00', $file->getUpdatedAt()->format('c'));
+        $this->assertSame('2020-04-23T18:25:43+00:00', null !== $file->getCreatedAt() ? $file->getCreatedAt()->format('c') : null);
+        $this->assertSame('2020-04-23T18:25:43+00:00', null !== $file->getUpdatedAt() ? $file->getUpdatedAt()->format('c') : null);
         $this->assertNull($file->getMetadata());
         $this->assertSame('/workspaces/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', $file->getWorkspace());
         $this->assertSame('/users/9d1ede2b-5687-4440-bdc8-dd0bc64f668c', $file->getCreator());

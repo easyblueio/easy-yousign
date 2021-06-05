@@ -1,4 +1,4 @@
-COMPOSER		= composer
+COMPOSER = composer
 
 ##
 ## Tests
@@ -31,22 +31,66 @@ composer-update:
 ## Quality assurance
 ## -----------------
 ##
-phpmd: vendor ## PHP Mess Detector (https://phpmd.org)
-	php ./vendor/bin/phpmd src text .phpmd.xml --exclude src/Migrations
+tools:
+	mkdir $@
 
-phpcpd: vendor ## PHP Copy/Paste Detector (https://github.com/sebastianbergmann/phpcpd)
-	php ./vendor/bin/phpcpd src
+tools/phpmd-%.phar: tools
+	rm -f tools/phpmd-*.phar
+	curl -LSso $@ \
+		"https://github.com/phpmd/phpmd/releases/download/$*/phpmd.phar"
 
-phpstan: vendor ## PHP stan (https://github.com/phpstan/phpstan)
-	php ./vendor/bin/phpstan analyse -l 4
+.PHONY: phpmd
+phpmd: tools/phpmd-2.9.1.phar
+	php $< $(arguments)
 
-php-cs-fixer: vendor ## php-cs-fixer (http://cs.sensiolabs.org)
-	php ./vendor/bin/php-cs-fixer fix --dry-run --using-cache=no --verbose --diff
+.PHONY: apply-phpmd
+apply-phpmd:
+	$(MAKE) phpmd arguments="src text .phpmd.xml"
 
-apply-php-cs-fixer: vendor ## apply php-cs-fixer fixes
-	php ./vendor/bin/php-cs-fixer fix --using-cache=no --verbose --diff
+tools/phpcpd-%.phar: tools
+	rm -f tools/phpcpd-*.phar
+	curl -LSso $@ \
+		"https://phar.phpunit.de/phpcpd-$*.phar"
 
-pre-commit: phpmd phpcpd php-cs-fixer phpstan
+.PHONY: phpcpd
+phpcpd: tools/phpcpd-6.0.3.phar
+	php $< $(arguments)
+
+.PHONY: apply-phpcpd
+apply-phpcpd:
+	$(MAKE) phpcpd arguments="src"
+
+tools/phpstan-%.phar: tools
+	rm -f tools/phpstan-*.phar
+	curl -LSso $@ \
+		"https://github.com/phpstan/phpstan/releases/download/$*/phpstan.phar"
+
+.PHONY: phpstan
+phpstan: tools/phpstan-0.12.86.phar
+	php $< $(arguments)
+
+.PHONY: apply-phpstan
+apply-phpstan:
+	$(MAKE) phpstan arguments="analyse --memory-limit=4G -l 8 src"
+
+tools/php-cs-fixer-%.phar: tools
+	rm -f tools/php-cs-fixer-*.phar
+	curl -LSso $@ \
+		"https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v$*/php-cs-fixer.phar"
+
+.PHONY: php-cs-fixer
+php-cs-fixer: tools/php-cs-fixer-3.0.0.phar
+	php $< $(arguments)
+
+.PHONY: check-php-cs
+check-php-cs:
+	$(MAKE) php-cs-fixer arguments="fix --dry-run --using-cache=no --verbose --diff"
+
+.PHONY: apply-php-cs
+apply-php-cs:
+	$(MAKE) php-cs-fixer arguments="fix --using-cache=no --verbose --diff"
+
+pre-commit: apply-phpmd apply-phpcpd apply-php-cs apply-phpstan
 
 .DEFAULT_GOAL := help
 

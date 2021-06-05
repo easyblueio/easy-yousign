@@ -20,11 +20,7 @@
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^2.8",
-        "friendsofphp/php-cs-fixer": "^2.18",
-        "phpmd/phpmd": "^2.9",
-        "phpstan/phpstan": "^0.12.31",
-        "phpunit/phpunit": "^9.1",
-        "sebastian/phpcpd": "^6.0"
+        "phpunit/phpunit": "^9.5"
     },
     "extra": {
         "hooks": {

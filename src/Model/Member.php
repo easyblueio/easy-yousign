@@ -90,7 +90,7 @@ class Member
     /**
      * @Groups({"read", "write"})
      */
-    protected ?ModeSmsConfiguration $modeSmsConfiguration = null;
+    protected ?OperationModeSmsConfiguration $operationModeSmsConfiguration = null;
 
     public function getId(): ?string
     {
@@ -267,14 +267,14 @@ class Member
         return $this;
     }
 
-    public function getModeSmsConfiguration(): ?ModeSmsConfiguration
+    public function getOperationModeSmsConfiguration(): ?OperationModeSmsConfiguration
     {
-        return $this->modeSmsConfiguration;
+        return $this->operationModeSmsConfiguration;
     }
 
-    public function setModeSmsConfiguration(?ModeSmsConfiguration $modeSmsConfiguration): self
+    public function setOperationModeSmsConfiguration(?OperationModeSmsConfiguration $operationModeSmsConfiguration): self
     {
-        $this->modeSmsConfiguration = $modeSmsConfiguration;
+        $this->operationModeSmsConfiguration = $operationModeSmsConfiguration;
 
         return $this;
     }

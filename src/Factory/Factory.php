@@ -12,6 +12,7 @@ declare(strict_types = 1);
 namespace Easyblue\YouSign\Factory;
 
 use Easyblue\YouSign\Http\Client;
+use Easyblue\YouSign\Resources\AbstractResource;
 use Easyblue\YouSign\Serializer\YouSignSerializer;
 
 /**
@@ -33,7 +34,8 @@ final class Factory
         $this->serializer = new YouSignSerializer();
     }
 
-    public function __call(string $name, $args)
+    /** @param array|null $args */
+    public function __call(string $name, $args): AbstractResource
     {
         $resource = $this->getResourcesClass($name);
 

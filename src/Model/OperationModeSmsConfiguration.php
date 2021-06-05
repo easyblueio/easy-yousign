@@ -13,7 +13,7 @@ namespace Easyblue\YouSign\Model;
 
 use Symfony\Component\Serializer\Annotation\Groups;
 
-class ModeSmsConfiguration
+class OperationModeSmsConfiguration
 {
     /**
      * @Groups({"read", "write"})

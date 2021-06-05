@@ -78,6 +78,8 @@ class File
 
     /**
      * @Groups({"read", "write"})
+     *
+     * @var int|string|bool
      */
     protected $position;
 
@@ -213,12 +215,14 @@ class File
         return $this;
     }
 
+    /** @return int|string|bool */
     public function getPosition()
     {
         return $this->position;
     }
 
-    public function setPosition($position)
+    /** @param int|string|bool $position */
+    public function setPosition($position): self
     {
         $this->position = $position;
 

@@ -252,7 +252,7 @@
         "operationCustomModes": [
           "sms"
         ],
-        "modeSmsConfiguration": {
+        "operationModeSmsConfiguration": {
           "content": "Hello, your code for signature is {{code}}."
         }
       }

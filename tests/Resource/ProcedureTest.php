@@ -16,13 +16,15 @@ use Easyblue\YouSign\Model\File;
 use Easyblue\YouSign\Model\Procedure;
 use Easyblue\YouSign\Resources\ProcedureResource;
 use Easyblue\YouSign\Serializer\YouSignSerializer;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\MessageInterface;
 
 class ProcedureTest extends TestCase
 {
-    private $serializer;
-    private $client;
+    private YouSignSerializer $serializer;
+    /** @var MockObject|Client */
+    private MockObject $client;
 
     protected function setUp(): void
     {
@@ -30,7 +32,7 @@ class ProcedureTest extends TestCase
         $this->serializer = new YouSignSerializer();
     }
 
-    public function testAll()
+    public function testAll(): void
     {
         $response = $this->createMock(MessageInterface::class);
         $response->method('getBody')
@@ -45,7 +47,7 @@ class ProcedureTest extends TestCase
         $this->assertSame('string', $files[0]->getName());
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $response = $this->createMock(MessageInterface::class);
         $response->method('getBody')
@@ -59,7 +61,7 @@ class ProcedureTest extends TestCase
         $this->assertSame('string', $procedure->getName());
     }
 
-    public function testGet()
+    public function testGet(): void
     {
         $response = $this->createMock(MessageInterface::class);
         $response->method('getBody')

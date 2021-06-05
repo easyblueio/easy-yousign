@@ -42,18 +42,24 @@ class YouSignSerializer
         $this->serializer = new Serializer($normalizers, [new JsonEncode(), new JsonDecode()]);
     }
 
+    /** @return mixed */
     public function deserialize(string $data, string $entityClass)
     {
         return $this->serializer->deserialize($data, $entityClass, 'json', ['groups' => ['read']]);
     }
 
+    /** @param mixed $object */
     public function serialize($object): string
     {
         return $this->serializer->serialize($object, 'json', ['groups' => ['write']]);
     }
 
+    /** @param mixed $data */
     public function normalize($data): array
     {
-        return $this->serializer->normalize($data, null, ['groups' => ['write'], AbstractObjectNormalizer::SKIP_NULL_VALUES => true]);
+        /** @var array */
+        $normalize = $this->serializer->normalize($data, null, ['groups' => ['write'], AbstractObjectNormalizer::SKIP_NULL_VALUES => true]);
+
+        return $normalize;
     }
 }
