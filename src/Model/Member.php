@@ -17,79 +17,49 @@ class Member
 {
     use TimestampsTrait;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $id = null;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $user = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $type = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $firstname = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $lastname = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $email = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $phone = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?int $position = null;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $status = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected array $fileObjects = [];
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $comment = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $procedure = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $operationLevel = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected array $operationCustomModes = [];
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?OperationModeSmsConfiguration $operationModeSmsConfiguration = null;
 
     public function getId(): ?string

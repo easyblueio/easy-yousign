@@ -21,8 +21,8 @@ use Easyblue\YouSign\Serializer\YouSignSerializer;
  */
 final class Factory
 {
-    private Client $client;
-    private YouSignSerializer $serializer;
+    private readonly Client $client;
+    private readonly YouSignSerializer $serializer;
 
     public function __construct(string $apiKey, string $env = Client::ENV_STAGING, Client $client = null, array $clientOptions = [])
     {
@@ -34,12 +34,13 @@ final class Factory
         $this->serializer = new YouSignSerializer();
     }
 
-    /** @param array|null $args */
-    public function __call(string $name, $args): AbstractResource
+    public function __call(string $name, array|null $args): AbstractResource
     {
         $resource = $this->getResourcesClass($name);
+        /** @var AbstractResource $object */
+        $object = new $resource($this->client, $this->serializer, ...$args);
 
-        return new $resource($this->client, $this->serializer, ...$args);
+        return $object;
     }
 
     public function getClient(): Client

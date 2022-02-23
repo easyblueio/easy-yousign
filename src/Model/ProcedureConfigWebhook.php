@@ -16,69 +16,62 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 
 class ProcedureConfigWebhook
 {
-    public const PROCEDURE_STARTED  = 'procedure.started';
-    public const PROCEDURE_FINISHED = 'procedure.finished';
-    public const PROCEDURE_REFUSED  = 'procedure.refused';
-    public const PROCEDURE_EXPIRED  = 'procedure.expired';
-    public const PROCEDURE_DELETED  = 'procedure.deleted';
-    public const MEMBER_STARTED     = 'member.started';
-    public const MEMBER_FINISHED    = 'member.finished';
-    public const COMMENT_CREATED    = 'comment.created';
+    final public const PROCEDURE_STARTED  = 'procedure.started';
+    final public const PROCEDURE_FINISHED = 'procedure.finished';
+    final public const PROCEDURE_REFUSED  = 'procedure.refused';
+    final public const PROCEDURE_EXPIRED  = 'procedure.expired';
+    final public const PROCEDURE_DELETED  = 'procedure.deleted';
+    final public const MEMBER_STARTED     = 'member.started';
+    final public const MEMBER_FINISHED    = 'member.finished';
+    final public const COMMENT_CREATED    = 'comment.created';
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("procedure.started")
-     *
      * @var Webhook[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('procedure.started')]
     protected array $procedureStartedWebhooks = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("procedure.finished")
-     *
      * @var Webhook[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('procedure.finished')]
     protected array $procedureFinishedWebhooks = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("procedure.refused")
-     *
      * @var Webhook[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('procedure.refused')]
     protected array $procedureRefusedWebhooks = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("procedure.expired")
-     *
      * @var Webhook[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('procedure.expired')]
     protected array $procedureExpiredWebhooks = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("procedure.deleted")
-     *
      * @var Webhook[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('procedure.deleted')]
     protected array $procedureDeletedWebhooks = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("member.finished")
-     *
      * @var Webhook[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('member.finished')]
     protected array $memberFinishedWebhooks = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("comment.created")
-     *
      * @var Webhook[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('comment.created')]
     protected array $commentCreatedWebhooks = [];
 
     /**
@@ -91,8 +84,6 @@ class ProcedureConfigWebhook
 
     /**
      * @param Webhook[]|null $procedureStartedWebhooks
-     *
-     * @return ProcedureConfigWebhook
      */
     public function setProcedureStartedWebhooks(?array $procedureStartedWebhooks): self
     {
@@ -118,8 +109,6 @@ class ProcedureConfigWebhook
 
     /**
      * @param Webhook[]|null $procedureFinishedWebhooks
-     *
-     * @return ProcedureConfigWebhook
      */
     public function setProcedureFinishedWebhooks(?array $procedureFinishedWebhooks): self
     {
@@ -145,8 +134,6 @@ class ProcedureConfigWebhook
 
     /**
      * @param Webhook[]|null $procedureRefusedWebhooks
-     *
-     * @return ProcedureConfigWebhook
      */
     public function setProcedureRefusedWebhooks(?array $procedureRefusedWebhooks): self
     {
@@ -172,8 +159,6 @@ class ProcedureConfigWebhook
 
     /**
      * @param Webhook[]|null $procedureExpiredWebhooks
-     *
-     * @return ProcedureConfigWebhook
      */
     public function setProcedureExpiredWebhooks(?array $procedureExpiredWebhooks): self
     {
@@ -199,8 +184,6 @@ class ProcedureConfigWebhook
 
     /**
      * @param Webhook[]|null $procedureDeletedWebhooks
-     *
-     * @return ProcedureConfigWebhook
      */
     public function setProcedureDeletedWebhooks(?array $procedureDeletedWebhooks): self
     {
@@ -226,8 +209,6 @@ class ProcedureConfigWebhook
 
     /**
      * @param Webhook[]|null $memberFinishedWebhooks
-     *
-     * @return ProcedureConfigWebhook
      */
     public function setMemberFinishedWebhooks(?array $memberFinishedWebhooks): self
     {
@@ -253,8 +234,6 @@ class ProcedureConfigWebhook
 
     /**
      * @param Webhook[]|null $commentCreatedWebhooks
-     *
-     * @return ProcedureConfigWebhook
      */
     public function setCommentCreatedWebhooks(?array $commentCreatedWebhooks): self
     {

@@ -15,7 +15,7 @@ use Easyblue\YouSign\Model\Procedure;
 
 class ProcedureResource extends AbstractResource
 {
-    public const ENDPOINT = '/procedures';
+    final public const ENDPOINT = '/procedures';
 
     /** @return mixed */
     public function all()

@@ -15,20 +15,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 class ProcedureConfig
 {
-    /**
-     * @Groups({"read", "write"})
-     */
-    protected ?ProcedureConfigEmail $email = null;
-
-    /**
-     * @Groups({"read", "write"})
-     */
-    protected ?ProcedureConfigWebhook $webhook = null;
-
-    public function __construct(ProcedureConfigEmail $email = null, ProcedureConfigWebhook $webhook = null)
-    {
-        $this->email   = $email;
-        $this->webhook = $webhook;
+    public function __construct(
+        #[Groups(['read', 'write'])] protected ?ProcedureConfigEmail $email = null,
+        #[Groups(['read', 'write'])] protected ?ProcedureConfigWebhook $webhook = null
+    ) {
     }
 
     public function getEmail(): ?ProcedureConfigEmail

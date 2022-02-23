@@ -12,7 +12,7 @@ jobs:
             -   name: Install PHP extensions
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: '8.0.3'
+                    php-version: '8.1.2'
                     tools: pecl, composer, flex, cs2pr, php-cs-fixer, phpmd, phpcpd, phpstan
                     ini-values: memory_limit=-1
                     extensions: xsl, zip, ctype, json

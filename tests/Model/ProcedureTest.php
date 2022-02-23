@@ -11,12 +11,9 @@ declare(strict_types = 1);
 
 namespace Easyblue\YouSign\tests\Model;
 
-use Easyblue\YouSign\Model\Email;
 use Easyblue\YouSign\Model\Procedure;
-use Easyblue\YouSign\Model\ProcedureConfig;
 use Easyblue\YouSign\Model\ProcedureConfigEmail;
 use Easyblue\YouSign\Model\ProcedureConfigWebhook;
-use Easyblue\YouSign\Model\Webhook;
 use Easyblue\YouSign\Serializer\YouSignSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -24,7 +21,6 @@ class ProcedureTest extends TestCase
 {
     public function testSerialize(): void
     {
-        /** @var string */
         $json = file_get_contents(__DIR__.'/../Fixtures/procedure.json');
 
         $serializer = new YouSignSerializer();
@@ -47,21 +43,16 @@ class ProcedureTest extends TestCase
         $this->assertTrue($procedure->isRelatedFilesEnable());
         $this->assertFalse($procedure->isArchive());
 
-        /** @var ProcedureConfig */
-        $procedureConfig = $procedure->getConfig();
-        /** @var ProcedureConfigEmail */
+        $procedureConfig      = $procedure->getConfig();
         $procedureConfigEmail = $procedureConfig->getEmail();
-        /** @var Email */
-        $emailConfig = $procedureConfigEmail->getProcedureStartedEmails()[0];
+        $emailConfig          = $procedureConfigEmail->getProcedureStartedEmails()[0];
         $this->assertSame('string', $emailConfig->getMessage());
         $this->assertSame('string', $emailConfig->getFromName());
         $this->assertSame('string', $emailConfig->getSubject());
         $this->assertSame(['@members'], $emailConfig->getTo());
 
-        /** @var ProcedureConfigWebhook */
         $procedureConfigWebhook = $procedureConfig->getWebhook();
-        /** @var Webhook */
-        $webhookConfig = $procedureConfigWebhook->getProcedureStartedWebhooks()[0];
+        $webhookConfig          = $procedureConfigWebhook->getProcedureStartedWebhooks()[0];
         $this->assertSame('string', $webhookConfig->getUrl());
         $this->assertSame('GET', $webhookConfig->getMethod());
         $this->assertSame(['X-Yousign-Custom-Header' => 'Test value'], $webhookConfig->getHeaders());
@@ -69,7 +60,7 @@ class ProcedureTest extends TestCase
         $json = $serializer->serialize($procedure);
         $this->assertJson($json);
 
-        $array = json_decode($json, true);
+        $array = json_decode($json, true, 512, \JSON_THROW_ON_ERROR);
         $this->assertSame('string', $array['config']['email'][ProcedureConfigEmail::PROCEDURE_STARTED][0]['subject']);
         $this->assertSame(['@members'], $array['config']['email'][ProcedureConfigEmail::PROCEDURE_STARTED][0]['to']);
         $this->assertSame('string', $array['config']['webhook'][ProcedureConfigWebhook::PROCEDURE_FINISHED][0]['url']);

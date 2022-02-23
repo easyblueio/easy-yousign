@@ -18,23 +18,17 @@ use Psr\Http\Message\MessageInterface;
 
 class Client
 {
-    public const ENV_PROD    = 'prod';
-    public const ENV_STAGING = 'staging';
+    final public const ENV_PROD    = 'prod';
+    final public const ENV_STAGING = 'staging';
 
-    public const URL_PROD    = 'https://api.yousign.com';
-    public const URL_STAGING = 'https://staging-api.yousign.com';
-
-    public string $key;
+    final public const URL_PROD    = 'https://api.yousign.com';
+    final public const URL_STAGING = 'https://staging-api.yousign.com';
     public string $baseUrl;
 
     public GuzzleClient $client;
-    protected array     $clientOptions = [];
 
-    public function __construct(string $apiKey, string $env = self::ENV_STAGING, GuzzleClient $client = null, array $clientOptions = [])
+    public function __construct(public string $key, string $env = self::ENV_STAGING, GuzzleClient $client = null, protected array $clientOptions = [])
     {
-        $this->clientOptions = $clientOptions;
-
-        $this->key     = $apiKey;
         $this->baseUrl = self::ENV_PROD === $env ? self::URL_PROD : self::URL_STAGING;
 
         if (null === $client) {

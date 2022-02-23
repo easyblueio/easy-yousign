@@ -15,19 +15,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 class Webhook
 {
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $url = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $method = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected Header $headers;
 
     public function getUrl(): ?string

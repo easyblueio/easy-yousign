@@ -26,7 +26,7 @@ class YouSignSerializerTest extends TestCase
         $json       = $serializer->serialize($file);
         $this->assertJson($json);
 
-        $array = json_decode($json, true);
+        $array = json_decode($json, true, 512, \JSON_THROW_ON_ERROR);
         $this->assertSame('test.pdf', $array['name']);
     }
 }

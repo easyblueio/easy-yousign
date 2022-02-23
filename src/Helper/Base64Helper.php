@@ -23,8 +23,7 @@ class Base64Helper
         return base64_encode($data);
     }
 
-    /** @return string|false */
-    public static function base64decode(string $data)
+    public static function base64decode(string $data): string|false
     {
         return base64_decode($data, true);
     }
