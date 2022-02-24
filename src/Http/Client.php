@@ -18,11 +18,11 @@ use Psr\Http\Message\MessageInterface;
 
 class Client
 {
-    final public const ENV_PROD    = 'prod';
-    final public const ENV_STAGING = 'staging';
+    public const ENV_PROD    = 'prod';
+    public const ENV_STAGING = 'staging';
 
-    final public const URL_PROD    = 'https://api.yousign.com';
-    final public const URL_STAGING = 'https://staging-api.yousign.com';
+    public const URL_PROD    = 'https://api.yousign.com';
+    public const URL_STAGING = 'https://staging-api.yousign.com';
     public string $baseUrl;
 
     public GuzzleClient $client;

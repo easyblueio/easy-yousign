@@ -15,7 +15,7 @@ use Easyblue\YouSign\Model\File;
 
 class FileResource extends AbstractResource
 {
-    final public const ENDPOINT = '/files';
+    public const ENDPOINT = '/files';
 
     /**
      * @return File[]

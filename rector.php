@@ -18,21 +18,15 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(Option::SKIP, [
         // waits for phpstan to use php-parser 4.13
         \Rector\DeadCode\Rector\If_\RemoveDeadInstanceOfRector::class,
-        '*/Fixture/*',
-        '*/Source/*',
-        '*/Source*/*',
     ]);
     $services = $containerConfigurator->services();
 
     $services->set(\Rector\Php55\Rector\String_\StringClassNameToClassConstantRector::class)
              ->configure([
                  'Symfony\*',
-                 'Twig_*',
-                 'Swift_*',
-                 'Doctrine\*',
              ]);
     // Define what rule sets will be applied
-    $containerConfigurator->import(LevelSetList::UP_TO_PHP_81);
+    $containerConfigurator->import(LevelSetList::UP_TO_PHP_80);
     $containerConfigurator->import(\Rector\Set\ValueObject\SetList::CODE_QUALITY);
     $containerConfigurator->import(\Rector\Set\ValueObject\SetList::DEAD_CODE);
     $containerConfigurator->import(\Rector\Symfony\Set\SymfonySetList::SYMFONY_60);

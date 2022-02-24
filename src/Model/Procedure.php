@@ -17,11 +17,11 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 class Procedure
 {
     use TimestampsTrait;
-    final public const STATE_DRAFT    = 'draft';
-    final public const STATE_ACTIVE   = 'active';
-    final public const STATE_FINISHED = 'finished';
-    final public const STATE_EXPIRED  = 'expired';
-    final public const STATE_REFUSED  = 'refused';
+    public const STATE_DRAFT    = 'draft';
+    public const STATE_ACTIVE   = 'active';
+    public const STATE_FINISHED = 'finished';
+    public const STATE_EXPIRED  = 'expired';
+    public const STATE_REFUSED  = 'refused';
 
     #[Groups(['read'])]
     protected ?string $id = null;

@@ -93,6 +93,16 @@ apply-php-cs:
 
 pre-commit: apply-phpmd apply-phpcpd apply-php-cs apply-phpstan
 
+.PHONY: rector-apply
+rector-apply: vendor
+	vendor/bin/rector process $(arguments)
+
+.PHONY: rector
+rector:
+	$(MAKE) rector-apply arguments="--dry-run"
+
+
+
 .DEFAULT_GOAL := help
 
 help:
