@@ -91,17 +91,15 @@ check-php-cs:
 apply-php-cs:
 	$(MAKE) php-cs-fixer arguments="fix --using-cache=no --verbose --diff"
 
-pre-commit: apply-phpmd apply-phpcpd apply-php-cs apply-phpstan
-
-.PHONY: rector-apply
-rector-apply: vendor
+.PHONY: apply-rector
+apply-rector: vendor
 	vendor/bin/rector process $(arguments)
 
 .PHONY: rector
 rector:
 	$(MAKE) rector-apply arguments="--dry-run"
 
-
+pre-commit: apply-phpmd apply-phpcpd apply-php-cs apply-phpstan apply-rector
 
 .DEFAULT_GOAL := help
 
