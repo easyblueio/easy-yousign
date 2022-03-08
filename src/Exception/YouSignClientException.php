@@ -13,7 +13,7 @@ namespace Easyblue\YouSign\Exception;
 
 use GuzzleHttp\Exception\ClientException;
 
-class YouSignClientException extends \Exception
+class YouSignClientException extends \Exception implements ExceptionInterface
 {
     public array $violations = [];
 
@@ -22,7 +22,7 @@ class YouSignClientException extends \Exception
         parent::__construct($clientException->getMessage(), $clientException->getCode());
         $json = (string) $clientException->getResponse()->getBody();
 
-        $data = json_decode($json, true);
+        $data = json_decode($json, true, 512, \JSON_THROW_ON_ERROR);
         if (isset($data['violations'])) {
             $violations = [];
             foreach ($data['violations'] as $violation) {

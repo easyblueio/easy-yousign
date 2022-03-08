@@ -40,7 +40,7 @@ tools/phpmd-%.phar: tools
 		"https://github.com/phpmd/phpmd/releases/download/$*/phpmd.phar"
 
 .PHONY: phpmd
-phpmd: tools/phpmd-2.9.1.phar
+phpmd: tools/phpmd-2.11.1.phar
 	php $< $(arguments)
 
 .PHONY: apply-phpmd
@@ -66,7 +66,7 @@ tools/phpstan-%.phar: tools
 		"https://github.com/phpstan/phpstan/releases/download/$*/phpstan.phar"
 
 .PHONY: phpstan
-phpstan: tools/phpstan-0.12.86.phar
+phpstan: tools/phpstan-1.3.0.phar
 	php $< $(arguments)
 
 .PHONY: apply-phpstan
@@ -77,9 +77,10 @@ tools/php-cs-fixer-%.phar: tools
 	rm -f tools/php-cs-fixer-*.phar
 	curl -LSso $@ \
 		"https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v$*/php-cs-fixer.phar"
+	chmod +x tools/php-cs-fixer-*.phar
 
 .PHONY: php-cs-fixer
-php-cs-fixer: tools/php-cs-fixer-3.0.0.phar
+php-cs-fixer: tools/php-cs-fixer-3.4.0.phar
 	php $< $(arguments)
 
 .PHONY: check-php-cs
@@ -90,7 +91,15 @@ check-php-cs:
 apply-php-cs:
 	$(MAKE) php-cs-fixer arguments="fix --using-cache=no --verbose --diff"
 
-pre-commit: apply-phpmd apply-phpcpd apply-php-cs apply-phpstan
+.PHONY: apply-rector
+apply-rector: vendor
+	vendor/bin/rector process $(arguments)
+
+.PHONY: rector
+rector:
+	$(MAKE) rector-apply arguments="--dry-run"
+
+pre-commit: apply-phpmd apply-phpcpd apply-php-cs apply-phpstan apply-rector
 
 .DEFAULT_GOAL := help
 

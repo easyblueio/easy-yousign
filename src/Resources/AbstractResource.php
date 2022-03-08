@@ -16,12 +16,7 @@ use Easyblue\YouSign\Serializer\YouSignSerializer;
 
 abstract class AbstractResource
 {
-    protected Client $client;
-    protected YouSignSerializer $serializer;
-
-    public function __construct(Client $client, YouSignSerializer $serializer)
+    public function __construct(protected Client $client, protected YouSignSerializer $serializer)
     {
-        $this->client     = $client;
-        $this->serializer = $serializer;
     }
 }

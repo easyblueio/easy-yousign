@@ -12,6 +12,7 @@ declare(strict_types = 1);
 namespace Easyblue\YouSign\Serializer;
 
 use Doctrine\Common\Annotations\AnnotationReader;
+use Easyblue\YouSign\Exception\NormalizationTypeException;
 use Easyblue\YouSign\Serializer\Normalizer\HeaderNormalizer;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
@@ -57,8 +58,10 @@ class YouSignSerializer
     /** @param mixed $data */
     public function normalize($data): array
     {
-        /** @var array */
         $normalize = $this->serializer->normalize($data, null, ['groups' => ['write'], AbstractObjectNormalizer::SKIP_NULL_VALUES => true]);
+        if (!\is_array($normalize)) {
+            throw new NormalizationTypeException('Normalization is expected to be an array');
+        }
 
         return $normalize;
     }

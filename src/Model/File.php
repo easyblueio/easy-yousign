@@ -18,70 +18,44 @@ class File
 {
     use TimestampsTrait;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $id = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $name = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $type = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $password = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $description = null;
 
     protected ?array  $metadata = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $content = null;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $contentType = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $procedure = null;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $workspace = null;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $creator = null;
 
-    /**
-     * @Groups({"read"})
-     * @SerializedName("sha256")
-     */
+    #[Groups(['read'])]
+    #[SerializedName('sha256')]
     protected ?string $hash = null;
 
-    /**
-     * @Groups({"read", "write"})
-     *
-     * @var int|string|bool
-     */
-    protected $position;
+    #[Groups(['read', 'write'])]
+    protected int|string|bool $position;
 
     public function getId(): ?string
     {
@@ -215,14 +189,12 @@ class File
         return $this;
     }
 
-    /** @return int|string|bool */
-    public function getPosition()
+    public function getPosition(): bool|int|string
     {
         return $this->position;
     }
 
-    /** @param int|string|bool $position */
-    public function setPosition($position): self
+    public function setPosition(bool|int|string $position): self
     {
         $this->position = $position;
 

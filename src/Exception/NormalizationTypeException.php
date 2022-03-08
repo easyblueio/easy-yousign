@@ -9,11 +9,8 @@ declare(strict_types = 1);
  * file that was distributed with this source code.
  */
 
-namespace Easyblue\YouSign\Model;
+namespace Easyblue\YouSign\Exception;
 
-class Metadata
+class NormalizationTypeException extends \LogicException implements ExceptionInterface
 {
-    protected string $key;
-
-    protected int|string|bool|array $value;
 }

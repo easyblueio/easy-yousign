@@ -16,86 +16,57 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 
 class FileObject
 {
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $id = null;
 
-    /**
-     * @Groups({"write"})
-     * @SerializedName("file")
-     */
+    #[Groups(['write'])]
+    #[SerializedName('file')]
     protected ?string $fileId = null;
 
-    /**
-     * @Groups({"read"})
-     * @SerializedName("file")
-     */
+    #[Groups(['read'])]
+    #[SerializedName('file')]
     protected ?File $file = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected int $page = 0;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $position = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $fieldName = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $mention = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $mention2 = null;
 
     /**
-     * @Groups({"read"})
+     * @var \DateTime|\DateTimeImmutable|null
      */
-    protected ?\DateTime $executedAt = null;
+    #[Groups(['read'])]
+    protected ?\DateTimeInterface $executedAt = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $reason = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $type = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected bool $contentRequired = false;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $content = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $fontFamily = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?int $fontSize = 0;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $fontColor = null;
 
     public function getId(): ?string
@@ -170,12 +141,18 @@ class FileObject
         return $this;
     }
 
-    public function getExecutedAt(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable|null
+     */
+    public function getExecutedAt(): ?\DateTimeInterface
     {
         return $this->executedAt;
     }
 
-    public function setExecutedAt(?\DateTime $executedAt): self
+    /**
+     * @param \DateTime|\DateTimeImmutable|null $executedAt
+     */
+    public function setExecutedAt(?\DateTimeInterface $executedAt): self
     {
         $this->executedAt = $executedAt;
 

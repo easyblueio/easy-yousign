@@ -16,33 +16,44 @@ use Symfony\Component\Serializer\Annotation\Groups;
 trait TimestampsTrait
 {
     /**
-     * @Groups({"read"})
+     * @var \DateTime|\DateTimeImmutable|null
      */
-    protected ?\DateTime $createdAt = null;
+    #[Groups(['read'])]
+    protected ?\DateTimeInterface $createdAt = null;
 
     /**
-     * @Groups({"read"})
+     * @var \DateTime|\DateTimeImmutable|null
      */
-    protected ?\DateTime $updatedAt = null;
+    #[Groups(['read'])]
+    protected ?\DateTimeInterface $updatedAt = null;
 
-    public function getCreatedAt(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable|null
+     */
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTime $createdAt): self
+    public function setCreatedAt(\DateTime|\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable|null
+     */
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTime $updatedAt): self
+    /**
+     * @param \DateTime|\DateTimeImmutable|null $updatedAt
+     */
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 

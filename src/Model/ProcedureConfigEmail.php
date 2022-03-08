@@ -26,59 +26,52 @@ class ProcedureConfigEmail
     public const COMMENT_CREATED    = 'comment.created';
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("procedure.started")
-     *
      * @var Email[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('procedure.started')]
     protected array $procedureStartedEmails = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("procedure.finished")
-     *
      * @var Email[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('procedure.finished')]
     protected array $procedureFinishedEmails = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("procedure.refused")
-     *
      * @var Email[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('procedure.refused')]
     protected array $procedureRefusedEmails = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("procedure.expired")
-     *
      * @var Email[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('procedure.expired')]
     protected array $procedureExpiredEmails = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("procedure.deleted")
-     *
      * @var Email[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('procedure.deleted')]
     protected array $procedureDeletedEmails = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("member.finished")
-     *
      * @var Email[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('member.finished')]
     protected array $memberFinishedEmails = [];
 
     /**
-     * @Groups({"read", "write"})
-     * @SerializedName("comment.created")
-     *
      * @var Email[]
      */
+    #[Groups(['read', 'write'])]
+    #[SerializedName('comment.created')]
     protected array $commentCreatedEmails = [];
 
     /**
@@ -91,8 +84,6 @@ class ProcedureConfigEmail
 
     /**
      * @param Email[]|null $procedureStartedEmails
-     *
-     * @return ProcedureConfigEmail
      */
     public function setProcedureStartedEmails(?array $procedureStartedEmails): self
     {
@@ -118,8 +109,6 @@ class ProcedureConfigEmail
 
     /**
      * @param Email[]|null $procedureFinishedEmails
-     *
-     * @return ProcedureConfigEmail
      */
     public function setProcedureFinishedEmails(?array $procedureFinishedEmails): self
     {
@@ -145,8 +134,6 @@ class ProcedureConfigEmail
 
     /**
      * @param Email[]|null $procedureRefusedEmails
-     *
-     * @return ProcedureConfigEmail
      */
     public function setProcedureRefusedEmails(?array $procedureRefusedEmails): self
     {
@@ -172,8 +159,6 @@ class ProcedureConfigEmail
 
     /**
      * @param Email[]|null $procedureExpiredEmails
-     *
-     * @return ProcedureConfigEmail
      */
     public function setProcedureExpiredEmails(?array $procedureExpiredEmails): self
     {
@@ -199,8 +184,6 @@ class ProcedureConfigEmail
 
     /**
      * @param Email[]|null $procedureDeletedEmails
-     *
-     * @return ProcedureConfigEmail
      */
     public function setProcedureDeletedEmails(?array $procedureDeletedEmails): self
     {
@@ -226,8 +209,6 @@ class ProcedureConfigEmail
 
     /**
      * @param Email[]|null $memberFinishedEmails
-     *
-     * @return ProcedureConfigEmail
      */
     public function setMemberFinishedEmails(?array $memberFinishedEmails): self
     {
@@ -253,8 +234,6 @@ class ProcedureConfigEmail
 
     /**
      * @param Email[]|null $commentCreatedEmails
-     *
-     * @return ProcedureConfigEmail
      */
     public function setCommentCreatedEmails(?array $commentCreatedEmails): self
     {

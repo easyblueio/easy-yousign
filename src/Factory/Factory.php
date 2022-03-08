@@ -34,12 +34,13 @@ final class Factory
         $this->serializer = new YouSignSerializer();
     }
 
-    /** @param array|null $args */
-    public function __call(string $name, $args): AbstractResource
+    public function __call(string $name, ?array $args): AbstractResource
     {
         $resource = $this->getResourcesClass($name);
+        /** @var AbstractResource $object */
+        $object = new $resource($this->client, $this->serializer, ...$args);
 
-        return new $resource($this->client, $this->serializer, ...$args);
+        return $object;
     }
 
     public function getClient(): Client

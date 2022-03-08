@@ -23,103 +23,72 @@ class Procedure
     public const STATE_EXPIRED  = 'expired';
     public const STATE_REFUSED  = 'refused';
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $id = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $name = null;
 
     /**
-     * @Groups({"read", "write"})
+     * @var \DateTime|\DateTimeImmutable|null
      */
-    protected ?\DateTime $expiresAt = null;
+    #[Groups(['read', 'write'])]
+    protected ?\DateTimeInterface $expiresAt = null;
 
     /**
-     * @Groups({"read", "write"})
+     * @var \DateTime|\DateTimeImmutable|null
      */
-    protected ?\DateTime $finishedAt = null;
+    #[Groups(['read', 'write'])]
+    protected ?\DateTimeInterface $finishedAt = null;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $status = self::STATE_ACTIVE;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $creator = null;
 
-    /**
-     * @Groups({"read"})
-     * @SerializedName("creatorFirstName")
-     */
+    #[Groups(['read'])]
+    #[SerializedName('creatorFirstName')]
     protected ?string $creatorFirstname = null;
 
-    /**
-     * @Groups({"read"})
-     * @SerializedName("creatorLastName")
-     */
+    #[Groups(['read'])]
+    #[SerializedName('creatorLastName')]
     protected ?string $creatorLastname = null;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $workspace = null;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected ?string $parent = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected bool $template = false;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?string $description = null;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected bool $ordered = false;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected bool $relatedFilesEnable = false;
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected bool $archive = false;
 
     /**
-     * @Groups({"read", "write"})
-     *
      * @var Member[]
      */
+    #[Groups(['read', 'write'])]
     protected array $members = [];
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected array $metadatas = [];
 
-    /**
-     * @Groups({"read", "write"})
-     */
+    #[Groups(['read', 'write'])]
     protected ?ProcedureConfig $config = null;
 
-    /**
-     * @Groups({"read"})
-     */
+    #[Groups(['read'])]
     protected array $files = [];
 
     public function getId(): ?string
@@ -146,12 +115,18 @@ class Procedure
         return $this;
     }
 
-    public function getExpiresAt(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable|null
+     */
+    public function getExpiresAt(): ?\DateTimeInterface
     {
         return $this->expiresAt;
     }
 
-    public function setExpiresAt(?\DateTime $expiresAt): self
+    /**
+     * @param \DateTime|\DateTimeImmutable|null $expiresAt
+     */
+    public function setExpiresAt(?\DateTimeInterface $expiresAt): self
     {
         $this->expiresAt = $expiresAt;
 
@@ -300,8 +275,6 @@ class Procedure
 
     /**
      * @param Member[] $members
-     *
-     * @return Procedure
      */
     public function setMembers(array $members): self
     {
@@ -360,12 +333,18 @@ class Procedure
         return $this;
     }
 
-    public function getFinishedAt(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable|null
+     */
+    public function getFinishedAt(): ?\DateTimeInterface
     {
         return $this->finishedAt;
     }
 
-    public function setFinishedAt(?\DateTime $finishedAt): self
+    /**
+     * @param \DateTime|\DateTimeImmutable|null $finishedAt
+     */
+    public function setFinishedAt(?\DateTimeInterface $finishedAt): self
     {
         $this->finishedAt = $finishedAt;
 

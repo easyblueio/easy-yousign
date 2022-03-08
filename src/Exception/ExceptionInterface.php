@@ -9,11 +9,8 @@ declare(strict_types = 1);
  * file that was distributed with this source code.
  */
 
-namespace Easyblue\YouSign\Model;
+namespace Easyblue\YouSign\Exception;
 
-class Metadata
+interface ExceptionInterface extends \Throwable
 {
-    protected string $key;
-
-    protected int|string|bool|array $value;
 }

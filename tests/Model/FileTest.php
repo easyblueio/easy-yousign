@@ -19,7 +19,6 @@ class FileTest extends TestCase
 {
     public function testSerialize(): void
     {
-        /** @var string */
         $json = file_get_contents(__DIR__.'/../Fixtures/file.json');
 
         $serializer = new YouSignSerializer();
@@ -46,7 +45,7 @@ class FileTest extends TestCase
         $json = $serializer->serialize($file);
         $this->assertJson($json);
 
-        $array = json_decode($json, true);
+        $array = json_decode($json, true, 512, \JSON_THROW_ON_ERROR);
         $this->assertArrayNotHasKey('id', $array);
         $this->assertSame('string', $array['name']);
         $this->assertSame('signable', $array['type']);

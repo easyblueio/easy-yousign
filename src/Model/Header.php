@@ -13,11 +13,8 @@ namespace Easyblue\YouSign\Model;
 
 class Header
 {
-    protected array $parameters;
-
-    public function __construct(array $parameters)
+    public function __construct(protected array $parameters)
     {
-        $this->parameters = $parameters;
     }
 
     public function getParameters(): array
